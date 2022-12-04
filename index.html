@@ -4,9 +4,110 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/css/header.css" />
+    <link rel="stylesheet" href="/src/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Document</title>
   </head>
   <body>
-    <script type="module" src="script.js"></script>
+    <header>
+      <a href=""
+        ><img class="logo" src="/src/img/logo-no-background.png" alt="logo"
+      /></a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="">Home</a></li>
+          <li><a href="">Events</a></li>
+          <li><a href="">Rankings</a></li>
+          <li><a href="">Search Fighter</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="events-container">
+        <h1>Upcoming Event</h1>
+        <div class="main-event">
+          <div class="main-event-info">
+            <h2>UFC 262</h2>
+            <span class="main-event-name">Michael vs Brandon</span>
+            <span class="main-event-place"
+              >at 03.12.2022 at 10:00pm AMWAY CENTER, ORLEANDO</span
+            >
+          </div>
+          <div class="main-event-fighters-container">
+            <div class="main-event-fighter-info left-container">
+              <span class="main-event-fighter-name">Stephen Thomspon</span>
+              <img
+                class="main-event-fighter-img"
+                src="/src/img/fighters/1.jpg"
+                alt=""
+              />
+              <span class="main-event-fighter-results"
+                >21-1-0 <br />(win-loss-draw)</span
+              >
+            </div>
+            <div class="center-container">
+              <h3 class="center-text">VS</h3>
+              <h4 class="center-info-time">TIME LEFT:</h4>
+            </div>
+            <div class="main-event-fighter-info right-container">
+              <span class="main-event-fighter-name">Kevin Holland</span>
+              <img
+                class="main-event-fighter-img"
+                src="/src/img/fighters/2.jpg"
+                alt=""
+              />
+              <span class="main-event-fighter-results"
+                >16-6-1 <br />(win-loss-draw)</span
+              >
+            </div>
+          </div>
+          <button class="btn-show-all">SHOW ALL FIGHTS</button>
+        </div>
+        <div class="other-events">
+          <div class="event">
+            <div class="fight-info">
+              <span>dziisaj o 9:00 || Waga - ciężka</span>
+            </div>
+            <div class="event-fighter-container">
+              <img src="" alt="" />
+              <span class="fighter-name">Stephen</span>
+              <span class="fighter-results">17-6-1</span>
+            </div>
+
+            <div class="event-fighter-container">
+              <img src="" alt="" />
+              <span class="fighter-name">Stephen</span>
+              <span class="fighter-results">17-6-1</span>
+            </div>
+          </div>
+          <div class="event">
+            <div class="fight-info">
+              <span>dziisaj o 9:00 || Waga - ciężka</span>
+            </div>
+            <div class="event-fighter-container">
+              <img src="" alt="" />
+              <span class="fighter-name">Stephen</span>
+              <span class="fighter-results">17-6-1</span>
+            </div>
+
+            <div class="event-fighter-container">
+              <img src="" alt="" />
+              <span class="fighter-name">Stephen</span>
+              <span class="fighter-results">17-6-1</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span>created by mathef</span>
+    </footer>
   </body>
 </html>
