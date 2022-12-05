@@ -1,0 +1,50 @@
+:root {
+  --black-color: #080705;
+  --grey-color: #202020;
+  --dark-red: #702632;
+  --light-red: #912f40;
+  --background-color: #e7e7e7;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-family: "Roboto Slab", serif;
+}
+#events-container {
+  margin-top: 5em;
+  border: 3px solid white;
+}
+.event-type-switcher {
+  background-color: var(--dark-red);
+}
+.event-type-switcher > button {
+  cursor: pointer;
+  background-color: var(--light-red);
+  color: white;
+  font-weight: 500;
+  font-size: 1.4em;
+  padding: 1em;
+  border: none;
+}
+.event-type-switcher > button:hover {
+  background-color: var(--dark-red);
+}
+.table-head {
+  font-size: 1.3em;
+  font-weight: 900;
+}
+table,
+tr,
+td {
+  background-color: var(--grey-color);
+  border: 1px solid rgb(173, 170, 170);
+  border-collapse: collapse;
+  padding: 0.5em 0.5em;
+  color: white;
+}
+i {
+  margin: 0 0.3em;
+}

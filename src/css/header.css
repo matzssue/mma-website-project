@@ -21,7 +21,7 @@ header {
   align-items: center;
   padding: 1.4em 1em;
   background-color: var(--grey-color);
-  /* box-shadow: 8px 25px 24px 0px rgba(140, 140, 140, 1); */
+  z-index: 1;
 }
 
 .logo {
