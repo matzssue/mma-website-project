@@ -57,10 +57,10 @@ main {
 .main-event-info span {
   color: black;
 }
-.main-event-name {
-  font-weight: bold;
-  font-size: 1.5em;
+.main-event-info h2 {
+  font-size: 1.9em;
 }
+
 .main-event-place {
   font-size: 0.7em;
 }
@@ -72,6 +72,7 @@ main {
 .left-container,
 .right-container {
   position: relative;
+  max-width: fit-content;
   background-color: white;
   margin: 0.2em 3em;
   padding: 1em 0.2em;
@@ -106,9 +107,12 @@ main {
 }
 
 .main-event-fighter-img {
+  display: flex;
   height: 250px;
   width: 200px;
   margin-top: 2em;
+  justify-content: center;
+  align-items: center;
 }
 
 /* CENTER DIV (BEETWEN FIGHTERS) */
