@@ -19,9 +19,15 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 1.4em 1em;
+  height: 110px;
   background-color: var(--grey-color);
   z-index: 1;
+  transition: 0.2s all ease-in-out;
+}
+
+header.nav-scroll {
+  height: 80px;
+  transition: 0.2s all ease-in-out;
 }
 
 .logo {

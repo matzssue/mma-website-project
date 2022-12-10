@@ -2,23 +2,16 @@ import * as apis from "./apis.js";
 import mainFightView from "./mainFightView.js";
 import otherFightView from "./otherFightView.js";
 
-const controlMainEvent = async function () {
-  try {
-    await apis.getUfcNearestEvent();
-    await apis.getEventInfo();
-    mainFightView._generateMarkup(apis.state);
-  } catch (err) {}
+const renderMainPage = async function () {
+  await apis.getUfcNearestEvent();
+  await apis.getEventInfo(apis.state.currentEvent.id);
+  mainFightView._generateMarkup();
+  otherFightView._generateMarkup();
+  otherFightView.toggleMarkup();
 };
-const controlOtherEvents = async function () {
-  try {
-    await apis.getEventInfo();
-    otherFightView._render();
-  } catch (err) {
-    console.log(err);
-  }
+
+const init = async function () {
+  await renderMainPage();
 };
-function init() {
-  controlMainEvent();
-  controlOtherEvents();
-}
+
 init();

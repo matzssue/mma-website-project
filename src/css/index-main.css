@@ -45,12 +45,15 @@ main {
 
 /* MAIN EVENT */
 
-/* .main-event {
-  background-color: var(--background-color);
-} */
-.main-event-info {
+.main-event {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  min-height: 40vh;
+  min-width: 55vw;
+}
+.main-event-info {
   margin-bottom: 3em;
 }
 .main-event-info h2,
@@ -71,16 +74,23 @@ main {
 }
 .left-container,
 .right-container {
+  display: flex;
+  justify-self: center;
   position: relative;
   max-width: fit-content;
   background-color: white;
-  margin: 0.2em 3em;
   padding: 1em 0.2em;
   border-top-left-radius: 0.9em;
   border-top-right-radius: 0.9em;
   box-shadow: 8px 8px 18px -9px rgba(84, 84, 84, 1);
+  transition: 0.3s all ease;
+  transform: scale(1);
 }
-
+.left-container:hover,
+.right-container:hover {
+  transition: 0.3s all ease-in-out;
+  transform: scale(1.1);
+}
 /* INFORMATIONS ABOUT FIGHTERS*/
 
 .main-event-fighter-name {
@@ -103,6 +113,7 @@ main {
 .main-event-fighter-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -125,9 +136,9 @@ main {
 }
 
 .center-text {
-  background-color: var(--grey-color);
+  background-color: var(--dark-red);
   font-size: 2em;
-  padding: 1em 2em;
+  padding: 0.5em 1.5em;
   border-top-right-radius: 1em;
   border-bottom-left-radius: 1em;
   box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
@@ -169,6 +180,10 @@ main {
   border-right: 0.2em solid white;
   margin: 0 1em;
   padding: 0.4em 0em;
+}
+
+.hidden {
+  display: none;
 }
 .other-events-title {
   background-color: white;
@@ -215,9 +230,7 @@ main {
 .fight-info-weight {
   display: flex;
   margin-right: 1em;
-  width: 30%;
   float: right;
-
   justify-content: flex-end;
 }
 
@@ -227,4 +240,25 @@ main {
   display: flex;
   width: 50px;
   height: 50px;
+}
+
+.spinner {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

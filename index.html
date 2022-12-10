@@ -13,11 +13,12 @@
       rel="stylesheet"
     />
     <script type="module" src="/src/js/controller.js"></script>
+    <script type="module" src="/src/js/ui.js"></script>
 
     <title>MMA FIGHTS</title>
   </head>
   <body>
-    <header>
+    <header class="nav">
       <a href=""
         ><img class="logo" src="/src/img/logo-no-background.png" alt="logo"
       /></a>
@@ -31,7 +32,7 @@
       </nav>
     </header>
     <main>
-      <section class="events-container">
+      <section id="upcoming-event" class="events-container">
         <h1>Upcoming Event</h1>
         <div class="main-event">
           <!-- <div class="main-event-info">
@@ -69,10 +70,11 @@
               >
             </div> -->
           </div>
-          <button class="btn-show-all">SHOW ALL FIGHTS</button>
+          <a href="#other-fights"><button class="btn-show-all">SHOW ALL FIGHTS </button></a>
         </div>
-        <div class="other-events">
-          <div class="other-events-title">OTHER FIGHTS</div>
+        <div class="other-events hidden">
+      
+          <section  class="other-events-title"></a>OTHER FIGHTS</section>
           <!-- <div class="event">
             <div class="event-fight-info">
               <span class="fight-info-time"
