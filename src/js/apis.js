@@ -6,16 +6,6 @@ export const state = {
   otherFights: {},
   fighterId: [],
   fighterInfo: [],
-  Weights: [
-    "Flyweight",
-    "Bantamweight",
-    "Featherweight",
-    "LightWeight",
-    "Welterweight",
-    "Middleweight",
-    "Light Heavyweight",
-    "Heavyweight",
-  ],
 };
 
 export const getRandomPeople = async function () {
