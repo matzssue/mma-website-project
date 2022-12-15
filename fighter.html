@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/src/css/header.css" />
-    <link rel="stylesheet" href="/src/css/index.css" />
+    <link rel="stylesheet" href="/src/css/fighters.css" />
     <link rel="stylesheet" href="/src/css/footer.css" />
     <script type="module" src="/src/js/controller.js"></script>
     <script type="module" src="/src/js/ui.js"></script>
@@ -33,19 +33,19 @@
       </nav>
     </header>
     <main id="main">
-      <section id="upcoming-event" class="events-container">
-        <h1>Upcoming Event</h1>
-        <div class="main-event">
-
-          </div>
-          <a href="#other-fights"><button class="btn-show-all">SHOW ALL FIGHTS </button></a>
-        </div>
-        <div class="other-events hidden">
-      
-          <section  class="other-events-title"></a>OTHER FIGHTS</section>
-
-        </div>
-      </section>
+      <div class="search-bar">
+        <form id="form">
+          <label for="fighter-info">Search fighter by fullname</label><br />
+          <input
+            type="search"
+            id="input"
+            name="q"
+            placeholder="Search fighter..."
+          />
+          <button>Search</button>
+        </form>
+      </div>
+      <div id="fighter-container">asd</div>
     </main>
     <footer>
       <div class="footer-container"><span>created by mathef</span></div>

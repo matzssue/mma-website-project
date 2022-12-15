@@ -66,11 +66,14 @@ main {
 
 .main-event-place {
   font-size: 0.7em;
+  color: var(--grey-color);
+  font-weight: 400;
 }
 
 .main-event-fighters-container {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr;
+  gap: 15px;
 }
 .left-container,
 .right-container {
@@ -79,6 +82,7 @@ main {
   position: relative;
   max-width: fit-content;
   background-color: white;
+  margin: 0 1em;
   padding: 1em 0.2em;
   border-top-left-radius: 0.9em;
   border-top-right-radius: 0.9em;
@@ -242,12 +246,14 @@ main {
   height: 50px;
 }
 
+/* OTHER */
+
 .spinner {
   display: flex;
   align-self: center;
   justify-self: center;
   border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border-top: 16px solid var(--grey-color); /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;

@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/css/index-main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,6 +12,7 @@
     />
     <link rel="stylesheet" href="src/css/header.css" />
     <link rel="stylesheet" href="src/css/events.css" />
+    <link rel="stylesheet" href="src/css/footer.css" />
     <script src="https://kit.fontawesome.com/d44911e2cf.js" crossorigin="anonymous"></script>
     <title>Document</title>
   </head>
@@ -23,8 +23,8 @@
       /></a>
       <nav>
         <ul class="nav-list">
-          <li><a href="">Home</a></li>
-          <li><a href="">Events</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
           <li><a href="">Rankings</a></li>
           <li><a href="">Search Fighter</a></li>
         </ul>
@@ -33,7 +33,7 @@
     <main>
       <div id="events-container">
         <div class="event-type-switcher">
-          <button>Upcoming Events</button>
+          <button class="active">Upcoming Events</button>
           <button>Past Events</button>
         </div>
         <table class="event-table">
@@ -58,5 +58,8 @@
         </div>
       </div>
     </main>
+    <footer>
+      <div class="footer-container"><span>created by mathef</span></div>
+    </footer>
   </body>
 </html>

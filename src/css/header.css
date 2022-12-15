@@ -19,14 +19,14 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 110px;
+  height: 90px;
   background-color: var(--grey-color);
   z-index: 1;
   transition: 0.2s all ease-in-out;
 }
 
 header.nav-scroll {
-  height: 80px;
+  height: 70px;
   transition: 0.2s all ease-in-out;
 }
 

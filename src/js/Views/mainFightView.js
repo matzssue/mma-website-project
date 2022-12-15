@@ -1,4 +1,4 @@
-import { getFighterInfo, state } from "./apis.js";
+import { getFighterInfo, state } from "../apis.js";
 import View from "./View.js";
 
 class mainFightView extends View {
@@ -18,7 +18,7 @@ class mainFightView extends View {
         <div class="main-event-info">
           <h2>${this.#data.currentEvent.name}</h2>
           <span class="main-event-place"
-            >Date: ${convertedDate}</span
+            >Date: ${convertedDate} </br> Watch on EWPA.tv </span
           >
           </div>
           <div class="main-event-fighters-container">

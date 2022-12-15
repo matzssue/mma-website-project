@@ -1,11 +1,3 @@
-:root {
-  --black-color: #080705;
-  --grey-color: #202020;
-  --dark-red: #702632;
-  --light-red: #912f40;
-  --background-color: #e7e7e7;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -13,11 +5,24 @@
   color: white;
   font-family: "Roboto Slab", serif;
 }
+
+body {
+  background-color: var(--background-color);
+}
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #events-container {
   margin-top: 5em;
   border: 3px solid white;
 }
+
 .event-type-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   background-color: var(--dark-red);
 }
 .event-type-switcher > button {
@@ -32,6 +37,16 @@
 .event-type-switcher > button:hover {
   background-color: var(--dark-red);
 }
+button.active {
+  background-color: var(--dark-red);
+}
+
+.event-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .table-head {
   font-size: 1.3em;
   font-weight: 900;

@@ -1,6 +1,6 @@
 import * as apis from "./apis.js";
-import mainFightView from "./mainFightView.js";
-import otherFightView from "./otherFightView.js";
+import mainFightView from "./Views/mainFightView.js";
+import otherFightView from "./Views/otherFightView.js";
 
 const renderMainPage = async function () {
   await apis.getUfcNearestEvent();

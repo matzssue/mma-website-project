@@ -1,6 +1,6 @@
-import * as apis from "./apis.js";
+import * as apis from "../apis.js";
 import View from "./View.js";
-import { setDate } from "./helpers.js";
+import { setDate } from "../helpers.js";
 
 class otherFightsView extends View {
   _parentElement = document.querySelector(".other-events");
@@ -43,7 +43,6 @@ class otherFightsView extends View {
       const fighterOne = await apis.getFighterInfo(elem[0].fighterId);
       const fighterTwo = await apis.getFighterInfo(elem[1].fighterId);
       const fighterWeight = fighterOne[0].weight;
-      console.log(fighterWeight);
       createDiv.innerHTML = `
       
       <div class="event">
@@ -52,7 +51,7 @@ class otherFightsView extends View {
             >${date}</span
           >
           <span class="fight-info-weight"
-            >Waga - ${this.getWeightClass(fighterWeight)} || comain-event</span
+            >Weight class - ${this.getWeightClass(fighterWeight)}</span
           >
         </div>
         <div class="event-fighter-container left">
