@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="/src/css/header.css" />
     <link rel="stylesheet" href="/src/css/fighters.css" />
     <link rel="stylesheet" href="/src/css/footer.css" />
-    <script type="module" src="/src/js/controller.js"></script>
-    <script type="module" src="/src/js/ui.js"></script>
 
     <title>MMA FIGHTS</title>
   </head>
@@ -25,27 +23,61 @@
       /></a>
       <nav>
         <ul class="nav-list">
-          <li><a href="">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="events.html">Events</a></li>
-          <li><a href="index.html">Rankings</a></li>
-          <li><a href="">Search Fighter</a></li>
+          <li><a href="">Rankings</a></li>
+          <li><a href="fighter.html">Fighter</a></li>
         </ul>
       </nav>
     </header>
     <main id="main">
       <div class="search-bar">
         <form id="form">
-          <label for="fighter-info">Search fighter by fullname</label><br />
+          <label class="search-input-box" for="fighter-info"
+            >Search fighter by fullname</label
+          ><br />
           <input
             type="search"
             id="input"
             name="q"
             placeholder="Search fighter..."
           />
-          <button>Search</button>
+          <button class="btn-search">Search</button>
         </form>
       </div>
-      <div id="fighter-container">asd</div>
+      <div id="fighter-container">
+        <div class="fighter-image-container">
+          <img
+            class="fighter-photo"
+            src="src/img/fighters/boxer.jpg"
+            alt="fighter-photo"
+          />
+        </div>
+        <div class="fighter-stats-cointainer">
+          <span class="fighter-name"><p>Mateusz Kluska</p></span><br />
+          <p class="fighter-info"><span>Age:</span>20 / birth-date:</p>
+          <p class="fighter-info"><span>Height:</span> 152inch / 150cm</p>
+          <p class="fighter-info"><span>Weight:</span> 25inch / 50cm</p>
+          <p class="fighter-info"><span>Reach</span> 54inch / 150cm</p>
+          <div class="fighter-results">
+            <p>
+              Wins:
+              <span class="fighter-wins">10</span>Losses:<span
+                class="fighter-losses"
+              >
+                15</span
+              >Draws:<span class="fighter-draws"> 10</span>
+            </p>
+            <div class="fighter-results-stats">
+              <p class="fighter-info"><span>Subbmisions:</span>125</p>
+              <p class="fighter-info"><span>Knockkouts:</span>22</p>
+              <p class="fighter-info"><span>Titlewins:</span>5</p>
+              <p class="fighter-info"><span>Knockout Percentage:</span>5</p>
+              <p class="fighter-info"><span>Striking Accuracy:</span>5</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
       <div class="footer-container"><span>created by mathef</span></div>

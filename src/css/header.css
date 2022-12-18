@@ -20,7 +20,8 @@ header {
   justify-content: space-around;
   align-items: center;
   height: 90px;
-  background-color: var(--grey-color);
+  background-image: url(/src/img/navbar.jpg);
+  background-size: 30%;
   z-index: 1;
   transition: 0.2s all ease-in-out;
 }

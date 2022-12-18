@@ -17,11 +17,21 @@ export const getRandomPeople = async function () {
   } catch (err) {}
 };
 
+const setYear = async function () {
+  let currentYear = new Date().getFullYear();
+  const api = await fetch(
+    `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${currentYear}?key=${UFC_API_KEY}`
+  );
+  const data = await api.json();
+  if (!data.some((event) => event.Status === "Scheduled"))
+    return currentYear + 1;
+  else return currentYear;
+};
+
 export const getUfcNearestEvent = async function () {
   try {
-    const currentYear = new Date().getFullYear();
     const api = await fetch(
-      `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${currentYear}?key=${UFC_API_KEY}`
+      `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${await setYear()}?key=${UFC_API_KEY}`
     );
     const data = await api.json();
     const event = data.filter((event) => event.Status == "Scheduled")[0];
@@ -73,20 +83,26 @@ export const getFighterInfo = async function (fighterId) {
     );
     const data = await api.json();
     // Getting all important informations of fighter
+
     const newData = [data].map((fighter) => {
+      console.log(fighter);
       return {
         id: fighter.FighterId,
-        age: fighter.BirthDate,
         name: `${fighter.FirstName} ${fighter.LastName}`,
+        nickname: fighter.Nickname,
+        age: fighter.BirthDate,
         height: fighter.Height,
         weight: fighter.Weight,
         reach: fighter.Reach,
-        nickname: fighter.Nickname,
+        fighterResults: `${fighter.Wins}-${fighter.Losses}-${fighter.Draws}`,
         sumbissions: fighter.Sumbissions,
         knockouts: fighter.TechnicalKnockouts,
-        fighterResults: `${fighter.Wins}-${fighter.Losses}-${fighter.Draws}`,
+        titleWins: fighter.titlewins,
+        kockoutPercentage: fighter.CareerStats.KnockoutPercentage,
+        strikeAccuracy: fighter.CareerStats.SigStrikeAccuracy,
       };
     });
+
     state.fighterInfo = newData;
 
     return newData;

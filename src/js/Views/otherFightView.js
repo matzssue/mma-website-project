@@ -33,6 +33,10 @@ class otherFightsView extends View {
     });
   }
 
+  fighterIdCheck(fighterId) {
+    if (!fighterId) return;
+  }
+
   async _generateMarkup() {
     const date = setDate(this.#data.currentEvent.day);
 
@@ -41,7 +45,9 @@ class otherFightsView extends View {
     fighters.map(async (elem) => {
       const createDiv = document.createElement("div");
       const fighterOne = await apis.getFighterInfo(elem[0].fighterId);
+      if (!fighterOne) return;
       const fighterTwo = await apis.getFighterInfo(elem[1].fighterId);
+      if (!fighterTwo) return;
       const fighterWeight = fighterOne[0].weight;
       createDiv.innerHTML = `
       

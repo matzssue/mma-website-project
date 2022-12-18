@@ -9,6 +9,7 @@ class mainFightView extends View {
     this.renderSpinner();
 
     const fighterOne = await getFighterInfo(this.#data.mainFight[0].id);
+
     const fighterTwo = await getFighterInfo(this.#data.mainFight[1].id);
     const date = this.#data.currentEvent.date;
     const convertedDate = new Date(date);
