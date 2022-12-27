@@ -1,6 +1,6 @@
-import * as apis from "../apis.js";
+import * as apis from "../../apis.js";
 import View from "./View.js";
-import { setDate } from "../helpers.js";
+import { setDate } from "../../helpers.js";
 
 class otherFightsView extends View {
   _parentElement = document.querySelector(".other-events");

@@ -1,23 +1,23 @@
-import { getFighterInfo, state } from "../apis.js";
+import { getFighterInfo, state } from "../../apis.js";
 import View from "./View.js";
 
 class mainFightView extends View {
   _parentElement = document.querySelector(".main-event");
-  #data = state;
+  _data = state;
 
   async _generateMarkup() {
     this.renderSpinner();
 
-    const fighterOne = await getFighterInfo(this.#data.mainFight[0].id);
+    const fighterOne = await getFighterInfo(this._data.mainFight[0].id);
 
-    const fighterTwo = await getFighterInfo(this.#data.mainFight[1].id);
-    const date = this.#data.currentEvent.date;
+    const fighterTwo = await getFighterInfo(this._data.mainFight[1].id);
+    const date = this._data.currentEvent.date;
     const convertedDate = new Date(date);
 
     const markup = `
 
         <div class="main-event-info">
-          <h2>${this.#data.currentEvent.name}</h2>
+          <h2>${this._data.currentEvent.name}</h2>
           <span class="main-event-place"
             >Date: ${convertedDate} </br> Watch on EWPA.tv </span
           >

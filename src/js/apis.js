@@ -6,6 +6,7 @@ export const state = {
   otherFights: {},
   fighterId: [],
   fighterInfo: [],
+  allFighters: [],
 };
 
 export const getRandomPeople = async function () {
@@ -95,10 +96,10 @@ export const getFighterInfo = async function (fighterId) {
         weight: fighter.Weight,
         reach: fighter.Reach,
         fighterResults: `${fighter.Wins}-${fighter.Losses}-${fighter.Draws}`,
-        sumbissions: fighter.Sumbissions,
+        submissions: fighter.Submissions,
         knockouts: fighter.TechnicalKnockouts,
-        titleWins: fighter.titlewins,
-        kockoutPercentage: fighter.CareerStats.KnockoutPercentage,
+        titleWins: fighter.TitleWins,
+        knockoutPercentage: fighter.CareerStats.KnockoutPercentage,
         strikeAccuracy: fighter.CareerStats.SigStrikeAccuracy,
       };
     });
@@ -106,6 +107,24 @@ export const getFighterInfo = async function (fighterId) {
     state.fighterInfo = newData;
 
     return newData;
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const getAllFighters = async function () {
+  try {
+    const api = await fetch(
+      `https://api.sportsdata.io/v3/mma/scores/json/Fighters?key=${UFC_API_KEY}`
+    );
+    const data = await api.json();
+    const newData = data.map((fighter) => {
+      return {
+        fullname: `${fighter.FirstName} ${fighter.LastName}`,
+        fighterId: fighter.FighterId,
+      };
+    });
+    state.allFighters = newData;
+    console.log(state);
   } catch (err) {
     console.log(err);
   }
