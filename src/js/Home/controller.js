@@ -6,8 +6,8 @@ const renderMainPage = async function () {
   await apis.getUfcNearestEvent();
   await apis.getEventInfo(apis.state.currentEvent.id);
   await apis.getAllFighters();
-  mainFightView._generateMarkup();
-  otherFightView._generateMarkup();
+  await mainFightView._generateMarkup();
+  mainFightView.setFighterName();
   otherFightView.toggleMarkup();
 };
 

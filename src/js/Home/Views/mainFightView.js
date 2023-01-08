@@ -1,9 +1,10 @@
 import { getFighterInfo, state } from "../../apis.js";
 import View from "./View.js";
-
+import fighterView from "../../Fighter/Views/fighterView.js";
 class mainFightView extends View {
   _parentElement = document.querySelector(".main-event");
   _data = state;
+  _names = document.querySelectorAll(".fighter-name");
 
   async _generateMarkup() {
     this.renderSpinner();
@@ -24,7 +25,7 @@ class mainFightView extends View {
           </div>
           <div class="main-event-fighters-container">
           <div class="main-event-fighter-info left-container">
-            <span class="main-event-fighter-name">${fighterOne[0].name}</span>
+            <span class="main-event-fighter-name fighter-name">${fighterOne[0].name}</span>
             <img
               class="main-event-fighter-img"
               src="/src/img/fighters/1.jpg"
@@ -39,7 +40,7 @@ class mainFightView extends View {
             <h4 class="center-info-time">TIME LEFT:</h4>
           </div>
           <div class="main-event-fighter-info right-container">
-            <span class="main-event-fighter-name">${fighterTwo[0].name}</span>
+            <span class="main-event-fighter-name fighter-name">${fighterTwo[0].name}</span>
             <img
               class="main-event-fighter-img"
               src="/src/img/fighters/2.jpg"
@@ -53,6 +54,19 @@ class mainFightView extends View {
     this._clear();
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
-}
 
+  setFighterName() {
+    const fightersButtons = document.querySelectorAll(".fighter-name");
+    fightersButtons.forEach((name) =>
+      name.addEventListener("click", function (e) {
+        console.log(e.target);
+        const name = e.target.innerHTML;
+        state.fighterName = name;
+        console.log(window.location.hash);
+        document.location.href = "http://127.0.0.1:5500/fighter.html";
+        fighterView._generateMarkup(e, state.fighterName);
+      })
+    );
+  }
+}
 export default new mainFightView();

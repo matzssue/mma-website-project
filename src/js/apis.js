@@ -7,6 +7,7 @@ export const state = {
   fighterId: [],
   fighterInfo: [],
   allFighters: [],
+  fighterName: "",
 };
 
 export const getRandomPeople = async function () {
@@ -86,7 +87,6 @@ export const getFighterInfo = async function (fighterId) {
     // Getting all important informations of fighter
 
     const newData = [data].map((fighter) => {
-      console.log(fighter);
       return {
         id: fighter.FighterId,
         name: `${fighter.FirstName} ${fighter.LastName}`,
@@ -124,7 +124,6 @@ export const getAllFighters = async function () {
       };
     });
     state.allFighters = newData;
-    console.log(state);
   } catch (err) {
     console.log(err);
   }

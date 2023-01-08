@@ -28,11 +28,14 @@ class otherFightsView extends View {
   }
 
   toggleMarkup() {
-    this.#btn.addEventListener("click", function () {
-      document.querySelector(".other-events").classList.toggle("hidden");
-    });
+    this.#btn.addEventListener(
+      "click",
+      function () {
+        document.querySelector(".other-events").classList.toggle("hidden");
+      },
+      this._generateMarkup()
+    );
   }
-
   fighterIdCheck(fighterId) {
     if (!fighterId) return;
   }

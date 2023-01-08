@@ -1,23 +1,29 @@
 import * as apis from "../../apis.js";
 import { convertInchesToCm } from "../../helpers.js";
 class fighterView {
+  searchInput;
   _generateView() {
     const inputBtn = document.querySelector(".btn-search");
     inputBtn.addEventListener("click", this._generateMarkup);
   }
 
-  async _generateMarkup(e) {
+  async _generateMarkup(
+    e,
+    searchInput = document.querySelector("#input").value
+  ) {
     e.preventDefault();
-    const parentElement = document.querySelector("#fighter-container");
-    let searchInput = document.querySelector("#input").value.toLowerCase();
-    await apis.getAllFighters();
 
+    const name = searchInput.toLowerCase();
+    const parentElement = document.querySelector("#fighter-container");
+    await apis.getAllFighters();
+    console.log(name);
     // finding fighter with the same name as input
     const findFighter = apis.state.allFighters.find(
-      (fighter) => fighter.fullname.toLowerCase() === searchInput
+      (fighter) => fighter.fullname.toLowerCase() === name
     );
 
     // getting api info about fighter
+    console.log(findFighter);
     const fighterId = findFighter.fighterId;
     await apis.getFighterInfo(fighterId);
     const data = apis.state.fighterInfo[0];
