@@ -8,6 +8,7 @@ export const state = {
   fighterInfo: [],
   allFighters: [],
   fighterName: "",
+  buttons: [],
 };
 
 export const getRandomPeople = async function () {

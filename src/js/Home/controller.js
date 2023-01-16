@@ -7,8 +7,9 @@ const renderMainPage = async function () {
   await apis.getEventInfo(apis.state.currentEvent.id);
   await apis.getAllFighters();
   await mainFightView._generateMarkup();
-  mainFightView.setFighterName();
   otherFightView.toggleMarkup();
+  mainFightView.removeOverlay();
+  mainFightView.generatePopup();
 };
 
 const init = async function () {

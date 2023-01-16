@@ -1,6 +1,7 @@
 import * as apis from "../../apis.js";
 import View from "./View.js";
 import { setDate } from "../../helpers.js";
+import mainFightView from "./mainFightView.js";
 
 class otherFightsView extends View {
   _parentElement = document.querySelector(".other-events");
@@ -40,9 +41,8 @@ class otherFightsView extends View {
     if (!fighterId) return;
   }
 
-  async _generateMarkup() {
+  _generateMarkup() {
     const date = setDate(this.#data.currentEvent.day);
-
     const fighters = apis.state.otherFights;
 
     fighters.map(async (elem) => {
@@ -66,14 +66,14 @@ class otherFightsView extends View {
         <div class="event-fighter-container left">
           <img src="${await apis.getRandomPeople()}" alt="" />
           <span>
-            <p class="fighter-name">${fighterOne[0].name}</p>
+            <p class="fighter-name" data-id="name">${fighterOne[0].name}</p>
             <p class="fighter-results">${fighterOne[0].fighterResults}</p>
           </span>
         </div>
       
         <div class="event-fighter-container right">
           <span>
-            <p class="fighter-name">${fighterTwo[0].name}</p>
+            <p class="fighter-name" data-id="name">${fighterTwo[0].name}</p>
             <p class="fighter-results">${fighterTwo[0].fighterResults}</p>
           </span>
           <img src="${await apis.getRandomPeople()}" alt="" />
