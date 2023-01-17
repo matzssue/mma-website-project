@@ -1,7 +1,6 @@
 import { getFighterInfo, state } from "../../apis.js";
 import View from "./View.js";
 import { convertInchesToCm } from "../../helpers.js";
-import fighterView from "../../Fighter/Views/fighterView.js";
 class mainFightView extends View {
   _parentElement = document.querySelector(".main-event");
   _data = state;
@@ -9,7 +8,6 @@ class mainFightView extends View {
 
   async _generateMarkup() {
     this.renderSpinner();
-
     const fighterOne = await getFighterInfo(this._data.mainFight[0].id);
 
     const fighterTwo = await getFighterInfo(this._data.mainFight[1].id);
@@ -77,7 +75,7 @@ class mainFightView extends View {
       e.preventDefault();
       if (e.target.dataset.id === "name") {
         state.fighterName = e.target.innerHTML.toLowerCase();
-        const parentElement = document.querySelector("#main");
+        const parentElement = document.querySelector(".events-container");
         console.log(state.fighterName);
         const findFighter = state.allFighters.find(
           (fighter) => fighter.fullname.toLowerCase() === state.fighterName

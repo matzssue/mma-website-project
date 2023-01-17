@@ -1,7 +1,10 @@
 import * as apis from "../../apis.js";
 import { convertInchesToCm } from "../../helpers.js";
-class fighterView {
+import View from "../../Home/Views/View.js";
+class fighterView extends View {
   searchInput;
+  _parentElement = document.querySelector("#fighter-container");
+
   _generateView() {
     const inputBtn = document.querySelector(".btn-search");
     inputBtn.addEventListener("click", this._generateMarkup);
@@ -11,24 +14,24 @@ class fighterView {
     e,
     searchInput = document.querySelector("#input").value
   ) {
-    e.preventDefault();
+    try {
+      e.preventDefault();
+      const name = searchInput.toLowerCase();
+      const parentElement = document.querySelector("#fighter-container");
+      await apis.getAllFighters();
 
-    const name = searchInput.toLowerCase();
-    const parentElement = document.querySelector("#fighter-container");
-    await apis.getAllFighters();
-    console.log(name);
-    // finding fighter with the same name as input
-    const findFighter = apis.state.allFighters.find(
-      (fighter) => fighter.fullname.toLowerCase() === name
-    );
+      // finding fighter with the same name as input
+      const findFighter = apis.state.allFighters.find(
+        (fighter) => fighter.fullname.toLowerCase() === name
+      );
 
-    // getting api info about fighter
-    console.log(findFighter);
-    const fighterId = findFighter.fighterId;
-    await apis.getFighterInfo(fighterId);
-    const data = apis.state.fighterInfo[0];
-
-    const markup = `
+      // getting api info about fighter
+      console.log(findFighter);
+      const fighterId = findFighter.fighterId;
+      await apis.getFighterInfo(fighterId);
+      const data = apis.state.fighterInfo[0];
+      console.log(data);
+      const markup = `
     <div class="fighter-image-container">
       <img
         class="fighter-photo"
@@ -51,11 +54,11 @@ class fighterView {
       <div class="fighter-results">
         <p>
           Wins:
-          <span class="fighter-wins">10</span>Losses:<span
+          <span class="fighter-wins">${data.fighterWins}</span>Losses:<span
             class="fighter-losses"
           >
-            15</span
-          >Draws:<span class="fighter-draws"> 10</span>
+          ${data.fighterLosses}</span
+          >Draws:<span class="fighter-draws">${data.fighterDraws}</span>
         </p>
         <div class="fighter-results-stats">
           <p class="fighter-info"><span>Submissions:</span>${
@@ -74,8 +77,21 @@ class fighterView {
     </div>
   
     `;
-    parentElement.innerHTML = "";
-    parentElement.insertAdjacentHTML("beforeend", markup);
+
+      parentElement.innerHTML = "";
+      parentElement.insertAdjacentHTML("beforeend", markup);
+    } catch (err) {
+      const name = searchInput;
+      const parentElement = document.querySelector("#fighter-container");
+      const markup = `
+    <div class="error">
+
+      <p>Probably there is no fighter with name: ${name}. Please try somone else (example "Mateusz Gamrot") </p>
+  </div>
+    `;
+      parentElement.innerHTML = "";
+      parentElement.insertAdjacentHTML("afterbegin", markup);
+    }
   }
 }
 export default new fighterView();

@@ -8,7 +8,6 @@ export const state = {
   fighterInfo: [],
   allFighters: [],
   fighterName: "",
-  buttons: [],
 };
 
 export const getRandomPeople = async function () {
@@ -97,6 +96,9 @@ export const getFighterInfo = async function (fighterId) {
         weight: fighter.Weight,
         reach: fighter.Reach,
         fighterResults: `${fighter.Wins}-${fighter.Losses}-${fighter.Draws}`,
+        fighterWins: fighter.Wins,
+        fighterLosses: fighter.Losses,
+        fighterDraws: fighter.Draws,
         submissions: fighter.Submissions,
         knockouts: fighter.TechnicalKnockouts,
         titleWins: fighter.TitleWins,

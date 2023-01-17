@@ -44,8 +44,9 @@ class otherFightsView extends View {
   _generateMarkup() {
     const date = setDate(this.#data.currentEvent.day);
     const fighters = apis.state.otherFights;
-
     fighters.map(async (elem) => {
+      this.renderSpinner();
+      const spinnerRemove = document.querySelector(".spinner");
       const createDiv = document.createElement("div");
       const fighterOne = await apis.getFighterInfo(elem[0].fighterId);
       if (!fighterOne) return;
@@ -81,6 +82,7 @@ class otherFightsView extends View {
      </div>
   `;
       this._parentElement.appendChild(createDiv);
+      spinnerRemove.remove();
     });
   }
 }
