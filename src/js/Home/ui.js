@@ -1,7 +1,10 @@
-window.addEventListener("scroll", function () {
+const navBarChanger = function () {
   const header = document.querySelector("header");
   const height = document.querySelector("header").clientHeight;
-  if (window.scrollY > height) {
-    header.classList.add("nav-scroll");
-  } else header.classList.remove("nav-scroll");
-});
+
+  window.scrollY > height
+    ? header.classList.add("nav-scroll")
+    : header.classList.remove("nav-scroll");
+};
+
+window.addEventListener("scroll", navBarChanger);

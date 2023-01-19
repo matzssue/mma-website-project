@@ -4,9 +4,17 @@ import { convertInchesToCm } from "../../helpers.js";
 class mainFightView extends View {
   _parentElement = document.querySelector(".main-event");
   _data = state;
-  _names = document.querySelectorAll(".fighter-name");
 
-  async _generateMarkup() {
+  renderPopup() {
+    const mainPage = document.querySelector("#main");
+    mainPage.addEventListener("click", this.generatePopup);
+  }
+
+  removePopup() {
+    window.addEventListener("click", this.overlayRemover);
+  }
+
+  async _renderMarkup() {
     this.renderSpinner();
     const fighterOne = await getFighterInfo(this._data.mainFight[0].id);
 
@@ -54,38 +62,32 @@ class mainFightView extends View {
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
-  removeOverlay() {
-    window.addEventListener("click", function (e) {
-      const overlay = document.querySelector(".overlay");
-      if (!overlay) return;
-      if (overlay.classList === e.target.classList) {
-        const popup = document.querySelector(".overlay-content");
-        popup.remove();
-        overlay.remove();
-      }
-    });
+  overlayRemover(e) {
+    const overlay = document.querySelector(".overlay");
+    if (!overlay) return;
+    if (overlay.classList === e.target.classList) {
+      const popup = document.querySelector(".overlay-content");
+      popup.remove();
+      overlay.remove();
+    }
   }
 
-  async generatePopup() {
-    const fightersButtons = document.querySelectorAll(".fighter-name");
-    state.buttons = fightersButtons;
-    console.log(fightersButtons);
-    const main = document.querySelector("#main");
-    main.addEventListener("click", async function (e) {
-      e.preventDefault();
-      if (e.target.dataset.id === "name") {
-        state.fighterName = e.target.innerHTML.toLowerCase();
-        const parentElement = document.querySelector(".events-container");
-        console.log(state.fighterName);
-        const findFighter = state.allFighters.find(
-          (fighter) => fighter.fullname.toLowerCase() === state.fighterName
-        );
-        console.log(findFighter);
-        await getFighterInfo(findFighter.fighterId);
+  async generatePopup(e) {
+    if (e.target.dataset.id === "name") {
+      state.fighterName = e.target.innerHTML.toLowerCase();
+      const parentElement = document.querySelector(".events-container");
+      console.log(state.fighterName);
+      const findFighter = state.allFighters.find(
+        (fighter) => fighter.fullname.toLowerCase() === state.fighterName
+      );
 
-        const data = state.fighterInfo[0];
+      console.log(findFighter);
 
-        const markup = `
+      await getFighterInfo(findFighter.fighterId);
+
+      const data = state.fighterInfo[0];
+
+      const markup = `
         <div class="overlay"></div>
         <div class="overlay-content">
           <div class="fighter-image-container">
@@ -141,86 +143,9 @@ class mainFightView extends View {
         </div>
       
         `;
-        // parentElement.innerHTML = "";
-        parentElement.insertAdjacentHTML("beforeend", markup);
-      }
-    });
-
-    // state.buttons.forEach((name) =>
-    //   name.addEventListener("click", async function (e) {
-    //     e.preventDefault();
-
-    //     state.fighterName = e.target.innerHTML.toLowerCase();
-    //     const parentElement = document.querySelector("#main");
-    //     console.log(state.fighterName);
-    //     const findFighter = state.allFighters.find(
-    //       (fighter) => fighter.fullname.toLowerCase() === state.fighterName
-    //     );
-    //     console.log(findFighter);
-    //     await getFighterInfo(findFighter.fighterId);
-
-    //     const data = state.fighterInfo[0];
-
-    //     const markup = `
-    //     <div class="overlay"></div>
-    //     <div class="overlay-content">
-    //       <div class="fighter-image-container">
-    //         <img
-    //           class="fighter-photo"
-    //           src="src/img/fighters/boxer.jpg"
-    //           alt="fighter-photo"
-    //         />
-    //       </div>
-    //       <div class="fighter-stats-cointainer">
-    //         <span class="fighter-name" data-id="name"><p>${
-    //           data.name
-    //         }</p></span><br />
-    //         <p class="fighter-info"><span>Age:</span>20 / birth-date:</p>
-    //         <p class="fighter-info"><span>Height:</span>${
-    //           data.height
-    //         } inch / ${convertInchesToCm(data.height)} cm</p>
-    //         <p class="fighter-info"><span>Weight:</span>${
-    //           data.weight
-    //         } inch / ${convertInchesToCm(data.weight)} cm</p>
-    //         <p class="fighter-info"><span>Reach:</span>${
-    //           data.reach
-    //         } inch /  ${convertInchesToCm(data.reach)} cm</p>
-    //         <div class="fighter-results">
-    //           <p>
-    //             Wins:
-    //             <span class="fighter-wins">10</span>Losses:<span
-    //               class="fighter-losses"
-    //             >
-    //               15</span
-    //             >Draws:<span class="fighter-draws"> 10</span>
-    //           </p>
-    //           <div class="fighter-results-stats">
-    //             <p class="fighter-info"><span>Submissions:</span>${
-    //               data.submissions
-    //             }</p>
-    //             <p class="fighter-info"><span>Knockkouts:</span>${
-    //               data.knockouts
-    //             }</p>
-    //             <p class="fighter-info"><span>Titlewins:</span>${
-    //               data.titleWins
-    //             }</p>
-    //             <p class="fighter-info"><span>Knockout Percentage:</span>${
-    //               data.knockoutPercentage
-    //             }</p>
-    //             <p class="fighter-info"><span>Striking Accuracy:</span>${
-    //               data.strikeAccuracy
-    //             }</p>
-    //           </div>
-    //         </div>
-    //       </div>
-
-    //     </div>
-
-    //     `;
-    //     // parentElement.innerHTML = "";
-    //     parentElement.insertAdjacentHTML("beforeend", markup);
-    //   })
-    // );
+      // parentElement.innerHTML = "";
+      parentElement.insertAdjacentHTML("beforeend", markup);
+    }
   }
 }
 export default new mainFightView();

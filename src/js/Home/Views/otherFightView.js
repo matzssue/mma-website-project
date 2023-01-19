@@ -1,7 +1,6 @@
 import * as apis from "../../apis.js";
 import View from "./View.js";
 import { setDate } from "../../helpers.js";
-import mainFightView from "./mainFightView.js";
 
 class otherFightsView extends View {
   _parentElement = document.querySelector(".other-events");
@@ -28,30 +27,30 @@ class otherFightsView extends View {
     if (weight > 205) return "Heavyweight";
   }
 
-  toggleMarkup() {
+  renderMarkup() {
     this.#btn.addEventListener(
       "click",
-      function () {
-        document.querySelector(".other-events").classList.toggle("hidden");
-      },
+      this.toggleFights,
       this._generateMarkup()
     );
   }
-  fighterIdCheck(fighterId) {
-    if (!fighterId) return;
+
+  toggleFights() {
+    document.querySelector(".other-events").classList.toggle("hidden");
   }
 
   _generateMarkup() {
     const date = setDate(this.#data.currentEvent.day);
     const fighters = apis.state.otherFights;
+
     fighters.map(async (elem) => {
-      this.renderSpinner();
-      const spinnerRemove = document.querySelector(".spinner");
       const createDiv = document.createElement("div");
+
       const fighterOne = await apis.getFighterInfo(elem[0].fighterId);
       if (!fighterOne) return;
       const fighterTwo = await apis.getFighterInfo(elem[1].fighterId);
       if (!fighterTwo) return;
+
       const fighterWeight = fighterOne[0].weight;
       createDiv.innerHTML = `
       
@@ -81,8 +80,8 @@ class otherFightsView extends View {
         </div>
      </div>
   `;
+
       this._parentElement.appendChild(createDiv);
-      spinnerRemove.remove();
     });
   }
 }

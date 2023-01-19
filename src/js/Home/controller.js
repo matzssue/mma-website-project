@@ -2,18 +2,22 @@ import * as apis from "../apis.js";
 import mainFightView from "../Home/Views/mainFightView.js";
 import otherFightView from "../Home/Views/otherFightView.js";
 
-const renderMainPage = async function () {
+const getAllInfo = async function () {
   await apis.getUfcNearestEvent();
   await apis.getEventInfo(apis.state.currentEvent.id);
   await apis.getAllFighters();
-  await mainFightView._generateMarkup();
-  otherFightView.toggleMarkup();
-  mainFightView.removeOverlay();
-  mainFightView.generatePopup();
+};
+
+const renderMainPage = function () {
+  mainFightView._renderMarkup();
+  otherFightView.renderMarkup();
+  mainFightView.renderPopup();
+  mainFightView.removePopup();
 };
 
 const init = async function () {
-  await renderMainPage();
+  await getAllInfo();
+  renderMainPage();
 };
 
 init();
