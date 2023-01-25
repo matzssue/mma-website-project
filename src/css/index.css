@@ -31,8 +31,8 @@ main {
   text-align: center;
   overflow: hidden;
   margin: 2% 5%;
-  border-radius: 2em;
-  background-color: white;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
   box-shadow: 8px 8px 24px 0px rgba(140, 140, 140, 1);
 }
 .events-container h1 {
@@ -53,7 +53,7 @@ main {
   justify-content: center;
   align-self: center;
   min-height: 40vh;
-  min-width: 55vw;
+  min-width: 60vw;
 }
 .main-event-info {
   margin-bottom: 3em;
@@ -70,6 +70,8 @@ main {
   font-size: 0.7em;
   color: var(--grey-color);
   font-weight: 400;
+  /* background-color: var(--background-color); */
+  padding: 0.1em;
 }
 
 .main-event-fighters-container {
@@ -144,10 +146,10 @@ main {
 .center-text {
   background-color: var(--dark-red);
   font-size: 2em;
-  padding: 0.5em 1.5em;
-  border-top-right-radius: 1em;
-  border-bottom-left-radius: 1em;
-  box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
+  padding: 0.3em 1.5em;
+  /* border-top-right-radius: 1em;
+  border-bottom-left-radius: 1em; */
+  box-shadow: 8px 8px 24px 0px rgb(184, 184, 184);
 }
 .center-info-time {
   color: var(--dark-red);
@@ -163,7 +165,7 @@ main {
   padding: 0.7em 2em;
   margin: 2em 0;
   border: none;
-  border-radius: 1em;
+  /* border-radius: 1em; */
   box-shadow: 8px 8px 12px -1px rgba(97, 97, 97, 1);
 }
 .btn-show-all:hover {
