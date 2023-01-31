@@ -3,7 +3,7 @@ import mainFightView from "../Home/Views/mainFightView.js";
 import otherFightView from "../Home/Views/otherFightView.js";
 
 const getAllInfo = async function () {
-  await apis.getUfcNearestEvent();
+  await apis.getUfcNearestEvent(await apis.setYear());
   await apis.getEventInfo(apis.state.currentEvent.id);
   await apis.getAllFighters();
 };

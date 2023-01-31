@@ -16,24 +16,30 @@ export const getRandomPeople = async function () {
     const data = await api.json();
     const randomPicture = data.results[0].picture.medium;
     return randomPicture;
-  } catch (err) {}
+  } catch (err) {
+    console.err(err);
+  }
 };
 
-const setYear = async function () {
-  let currentYear = new Date().getFullYear();
-  const api = await fetch(
-    `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${currentYear}?key=${UFC_API_KEY}`
-  );
-  const data = await api.json();
-  if (!data.some((event) => event.Status === "Scheduled"))
-    return currentYear + 1;
-  else return currentYear;
+export const setYear = async function () {
+  try {
+    let currentYear = new Date().getFullYear();
+    const api = await fetch(
+      `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${currentYear}?key=${UFC_API_KEY}`
+    );
+    const data = await api.json();
+    if (!data.some((event) => event.Status === "Scheduled"))
+      return currentYear + 1;
+    else return currentYear;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export const getUfcNearestEvent = async function () {
+export const getUfcNearestEvent = async function (year) {
   try {
     const api = await fetch(
-      `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${await setYear()}?key=${UFC_API_KEY}`
+      `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${year}?key=${UFC_API_KEY}`
     );
     const data = await api.json();
     const event = data.filter((event) => event.Status == "Scheduled")[0];
@@ -46,6 +52,16 @@ export const getUfcNearestEvent = async function () {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getUfcEvents = async function (year) {
+  try {
+    const api = await fetch(
+      `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${year}?key=${UFC_API_KEY}`
+    );
+    const data = await api.json();
+    console.log(data);
+  } catch (err) {}
 };
 
 export const getEventInfo = async function (eventId) {
@@ -131,3 +147,4 @@ export const getAllFighters = async function () {
     console.log(err);
   }
 };
+// export const getPastEvents
