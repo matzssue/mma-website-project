@@ -60,7 +60,8 @@ export const getUfcEvents = async function (year) {
       `https://api.sportsdata.io/v3/mma/scores/json/Schedule/${LEAGUE}/${year}?key=${UFC_API_KEY}`
     );
     const data = await api.json();
-    console.log(data);
+
+    return data;
   } catch (err) {}
 };
 

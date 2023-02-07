@@ -47,6 +47,7 @@ class otherFightsView extends View {
       const createDiv = document.createElement("div");
 
       const fighterOne = await apis.getFighterInfo(elem[0].fighterId);
+      console.log(fighterOne);
       if (!fighterOne) return;
       const fighterTwo = await apis.getFighterInfo(elem[1].fighterId);
       if (!fighterTwo) return;

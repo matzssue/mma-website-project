@@ -127,8 +127,8 @@ main {
 
 .main-event-fighter-img {
   display: flex;
-  height: 250px;
-  width: 200px;
+  height: 300px;
+  width: 250px;
   margin-top: 2em;
   justify-content: center;
   align-items: center;

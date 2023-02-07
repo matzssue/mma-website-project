@@ -15,6 +15,7 @@ main {
   justify-content: center;
 }
 #events-container {
+  min-width: 60%;
   margin-top: 5em;
   border: 3px solid white;
 }
@@ -41,15 +42,36 @@ button.active {
   background-color: var(--dark-red);
 }
 
-.event-table {
+.set-year-buttons {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--dark-red);
+}
+.btn-year {
+  margin: 0.2em 0;
+  background-color: var(--dark-red);
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  cursor: pointer;
+  border: none;
+}
+.btn-year:hover {
+  transition: all 1s;
+  background-color: var(--light-red);
+}
+.btn-year:focus {
+  background-color: white;
+  color: black;
 }
 
 .table-head {
   font-size: 1.3em;
   font-weight: 900;
+}
+.event-table {
+  width: 100%;
 }
 table,
 tr,

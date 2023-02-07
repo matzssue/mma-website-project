@@ -35,8 +35,8 @@
     <main>
       <div id="events-container">
         <div class="event-type-switcher">
-          <button class="active">Upcoming Events</button>
-          <button>Past Events</button>
+          <button class="btn-upc-events active">Upcoming Events</button>
+          <button class="btn-past-events">Past Events</button>
         </div>
         <div class="set-year-buttons">
           <!-- <button>2022</button>
@@ -49,21 +49,23 @@
          
         
      
-          <tbody>
+        <thead>
                 <tr class="table-head">
-                    <td><i class="fa-regular fa-calendar"></i>Date</td>
-                    <td><i class="fa-solid fa-boxing-glove"></i>Event Name</td>
-                    <td><i class="fa-solid fa-location-dot"></i>Location</td>
+                    <th><i class="fa-regular fa-calendar"></i>Date</th>
+                    <th><i class="fa-solid fa-boxing-glove"></i>Event Name</th>
+                    <th><i class="fa-solid fa-location-dot"></i>Location</th>
                 </tr>
-                <tr class="table-content">
+              </thead>
+          <tbody class="table-content">
+                <tr class="table-content-event">
                     <td class="event-date">10.05.2022r </td>
                     <td class="event-name">UFC-FIGHT cannonier vs strickland</td>
                     <td class="event-location">T-Moblie Arena, Las Vegas, Nevada, US</td>
                 </tr>
-                <tr class="table-content">
+                <tr class="table-content-event">
                     <td class="event-date">Date-IMG</td>
                     <td class="event-name">UFC-FIGHT cannonier vs strickland</td>
-                    <td class="event-location">T-Moblie Arena, Las Vegas, Nevada, US</td>
+                    <td class="event-location">T-Moblie Arena, </td>
                 </tr>
             </tbody>
         </table>
