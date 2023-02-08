@@ -3,60 +3,112 @@ import * as apis from "../apis.js";
 import * as helpers from "../helpers.js";
 
 class eventsView extends View {
-  // setActive() {
-  //   let curYear = new Date().getFullYear();
-  //   const upcEventsBtn = document.querySelector(".btn-past-events");
-  //   upcEventsBtn.addEventListener('click', )
-  //   console.log(upcEventsBtn.classList);
-  //   if (upcEventsBtn.classList.value.includes("active")) {
-  //     this.getYearButtons();
-  //     this.getEventInfo(e, curYear, "Final");
-  //   }
-  // }
+  _parentElement = document.querySelector(".table-content");
+  buttonsContainer = document.querySelector(".set-year-buttons");
 
-  getYearButtons() {
+  getYearButtons = () => {
+    this._parentElement.innerHTML = "";
+    this.buttonsContainer.classList.remove("hidden");
+
     let year = new Date().getFullYear();
+
     const markup = `
-    
+      
     <button class="btn-year">${year}</button>
     <button class="btn-year">${year - 1}</button>
     <button class="btn-year">${year - 2}</button>
     <button class="btn-year">${year - 3}</button>
     <button class="btn-year">${year - 4}</button>
     <button class="btn-year">${year - 5}</button>
-
     
     `;
-    const parentElement = document.querySelector(".set-year-buttons");
-    parentElement.innerHTML = "";
-    parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
 
-  async getEventInfo(e, year = e.target.innerHTML) {
-    if (e.target.classList.value === "btn-year") {
-      const events = await apis.getUfcEvents(year);
-      const parentElement = document.querySelector(".table-content");
-      parentElement.innerHTML = "";
-      events.forEach((event) => {
-        // if (event.Status === status) {
-        const markup = `
+    this.buttonsContainer.innerHTML = "";
+    this.buttonsContainer.insertAdjacentHTML("afterbegin", markup);
+  };
+
+  renderUpcomingEvents = async () => {
+    const btnUpcomingEvents = document.querySelector(".btn-upc-events");
+    console.log(btnUpcomingEvents.classList);
+
+    this.buttonsContainer.classList.add("hidden");
+    this._parentElement.innerHTML = "";
+    let currYear = new Date().getFullYear();
+    const events = [
+      ...(await apis.getUfcEvents(currYear)),
+      await apis.getUfcEvents(currYear + 1),
+    ];
+    const scheduledEvents = events.filter(
+      (event) => event.Status === "Scheduled"
+    );
+
+    scheduledEvents.forEach((event) => {
+      const markup = `
       <tr class="table-content-event">
         <td class="event-date">${helpers.setDate(event.DateTime)}</td>
         <td class="event-name">${event.Name}</td>
-        <td class="event-location">${event.EventId}</td>
+  
+      </tr>
+          `;
 
-        </tr>
-        `;
+      this._parentElement.insertAdjacentHTML("beforeend", markup);
+    });
+  };
 
-        parentElement.insertAdjacentHTML("beforeend", markup);
+  renderPastEvents = async (e, year = e.target.innerHTML) => {
+    if (e.target.classList.value === "btn-year") {
+      this._parentElement.innerHTML = "";
+      const events = await apis.getUfcEvents(year);
+      events.forEach((event) => {
+        console.log(event);
+        // if (event.Status === status) {
+        const markup = `
+              <tr class="table-content-event">
+              <td class="event-date">${helpers.setDate(event.DateTime)}</td>
+              <td class="event-name">${event.Name}</td>
+             
+              
+              </tr>
+              `;
+
+        this._parentElement.insertAdjacentHTML("beforeend", markup);
         // }
       });
     }
+  };
+
+  toggleActive() {
+    const btnPastEvents = document.querySelector(".btn-past-events");
+    const btnUpcomingEvents = document.querySelector(".btn-upc-events");
+    btnPastEvents.addEventListener("click", function () {
+      btnPastEvents.classList.add("active");
+      btnUpcomingEvents.classList.remove("active");
+    });
+
+    btnUpcomingEvents.addEventListener("click", function () {
+      btnPastEvents.classList.remove("active");
+      btnUpcomingEvents.classList.add("active");
+    });
   }
 
   renderEvents() {
-    const buttons = document.querySelector(".set-year-buttons");
-    buttons.addEventListener("click", this.getEventInfo);
+    const btnPastEvents = document.querySelector(".btn-past-events");
+    const btnUpcomingEvents = document.querySelector(".btn-upc-events");
+
+    btnUpcomingEvents.addEventListener("click", this.renderUpcomingEvents);
+
+    btnPastEvents.addEventListener("click", this.getYearButtons);
   }
+
+  renderYearsEvents() {
+    const buttons = document.querySelector(".set-year-buttons");
+    buttons.addEventListener("click", this.renderPastEvents);
+  }
+
+  // toggleActive(button) {
+  //   const btnPastEvents = document.querySelector(".btn-past-events");
+  //   const btnUpcomingEvents = document.querySelector(".btn-upc-events");
+
+  // }
 }
 export default new eventsView();

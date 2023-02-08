@@ -28,7 +28,7 @@ main {
 }
 .event-type-switcher > button {
   cursor: pointer;
-  background-color: var(--light-red);
+  background-color: var(--dark-red);
   color: white;
   font-weight: 500;
   font-size: 1.4em;
@@ -36,10 +36,10 @@ main {
   border: none;
 }
 .event-type-switcher > button:hover {
-  background-color: var(--dark-red);
+  background-color: var(--light-red);
 }
 button.active {
-  background-color: var(--dark-red);
+  background-color: var(--light-red);
 }
 
 .set-year-buttons {
@@ -84,4 +84,7 @@ td {
 }
 i {
   margin: 0 0.3em;
+}
+.hidden {
+  display: none;
 }
