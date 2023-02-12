@@ -273,7 +273,7 @@ main {
 }
 .fighter-name:hover {
   cursor: pointer;
-  color: gray;
+  color: rgb(2, 2, 2);
 }
 .fighter-name p {
   margin-left: 0.5em;
@@ -363,6 +363,14 @@ main {
   scroll-behavior: auto;
 }
 
+.close-btn {
+  display: flex;
+  align-self: end;
+  background-color: transparent;
+  border: none;
+  padding: 0.2rem;
+  cursor: pointer;
+}
 /* OTHER */
 
 .spinner {

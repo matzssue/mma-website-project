@@ -16,7 +16,7 @@ main {
 }
 #events-container {
   min-width: 60%;
-  margin-top: 5em;
+  margin: 5em 0em;
   border: 3px solid white;
 }
 
@@ -50,6 +50,7 @@ button.active {
   background-color: var(--dark-red);
 }
 .btn-year {
+  width: 100%;
   margin: 0.2em 0;
   background-color: var(--dark-red);
   font-size: 1.2rem;
@@ -62,12 +63,11 @@ button.active {
   background-color: var(--light-red);
 }
 .btn-year:focus {
-  background-color: white;
-  color: black;
+  background-color: var(--light-red);
 }
 
 .table-head {
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-weight: 900;
 }
 .event-table {
@@ -81,6 +81,9 @@ td {
   border-collapse: collapse;
   padding: 0.5em 0.5em;
   color: white;
+}
+th {
+  padding: 0.5rem 0;
 }
 i {
   margin: 0 0.3em;

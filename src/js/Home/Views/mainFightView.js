@@ -12,9 +12,10 @@ class mainFightView extends View {
 
   removePopup() {
     window.addEventListener("click", this.overlayRemover);
+    window.addEventListener("keydown", this.overlayRemover);
   }
 
-  async _renderMarkup() {
+  _renderMarkup = async () => {
     try {
       this.renderSpinner();
       const fighterOne = await getFighterInfo(this._data.mainFight[0].id);
@@ -64,12 +65,17 @@ class mainFightView extends View {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   overlayRemover(e) {
     const overlay = document.querySelector(".overlay");
+    const closeButton = document.querySelector(".close-btn");
     if (!overlay) return;
-    if (overlay.classList === e.target.classList) {
+    if (
+      overlay.classList === e.target.classList ||
+      e.target === closeButton ||
+      e.key === "Escape"
+    ) {
       const popup = document.querySelector(".overlay-content");
       popup.remove();
       overlay.remove();
@@ -103,6 +109,7 @@ class mainFightView extends View {
             />
           </div>
           <div class="fighter-stats-cointainer">
+          <button class="close-btn">X</button>
             <span class="fighter-name" data-id="name"><p>${
               data.name
             }</p></span><br />
