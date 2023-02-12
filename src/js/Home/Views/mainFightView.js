@@ -36,7 +36,7 @@ class mainFightView extends View {
             <span class="main-event-fighter-name fighter-name" data-id="name">${fighterOne[0].name}</span>
             <img
               class="main-event-fighter-img"
-              src="/src/img/fighters/1.jpg"
+              src="./src/img/fighters/1.jpg"
               alt=""
             />
             <span class="main-event-fighter-results"
@@ -51,7 +51,7 @@ class mainFightView extends View {
             <span class="main-event-fighter-name fighter-name" data-id="name">${fighterTwo[0].name}</span>
             <img
               class="main-event-fighter-img"
-              src="/src/img/fighters/2.jpg"
+              src="./src/img/fighters/2.jpg"
               alt=""
             />
             <span class="main-event-fighter-results"

@@ -20,7 +20,7 @@ header {
   justify-content: space-evenly;
   align-items: center;
   height: 90px;
-  background-image: url(/src/img/navbar.jpg);
+  background-image: url(../img/navbar.jpg);
   background-size: 30%;
   z-index: 1;
   transition: 0.2s all ease-in-out;
