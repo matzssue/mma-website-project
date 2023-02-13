@@ -9,6 +9,11 @@ export const state = {
   allFighters: [],
   fighterName: "",
   pastEvents: [],
+  search: {
+    page: 1,
+    maxPage: 0,
+    year: 0,
+  },
 };
 
 export const getRandomPeople = async function () {

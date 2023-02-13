@@ -1,7 +1,7 @@
 import View from "../Home/Views/View.js";
 import * as apis from "../apis.js";
 import * as helpers from "../helpers.js";
-import * as pagination from "./pagination.js";
+import PaginationView from "./PaginationView.js";
 
 class eventsView extends View {
   _parentElement = document.querySelector(".table-content");
@@ -15,12 +15,12 @@ class eventsView extends View {
 
     const markup = `
       
-    <button class="btn-year">${year}</button>
-    <button class="btn-year">${year - 1}</button>
-    <button class="btn-year">${year - 2}</button>
-    <button class="btn-year">${year - 3}</button>
-    <button class="btn-year">${year - 4}</button>
-    <button class="btn-year">${year - 5}</button>
+    <button class="btn-year"data-year="${year}">${year}</button>
+    <button class="btn-year"data-year="${year - 1}">${year - 1}</button>
+    <button class="btn-year"data-year="${year - 2}">${year - 2}</button>
+    <button class="btn-year"data-year="${year - 3}">${year - 3}</button>
+    <button class="btn-year"data-year="${year - 4}">${year - 4}</button>
+    <button class="btn-year"data-year="${year - 5}">${year - 5}</button>
     
     `;
 
@@ -28,7 +28,7 @@ class eventsView extends View {
     this.buttonsContainer.insertAdjacentHTML("afterbegin", markup);
   };
 
-  renderUpcomingEvents = async () => {
+  generateUpcomingEvents = async () => {
     const btnUpcomingEvents = document.querySelector(".btn-upc-events");
     console.log(btnUpcomingEvents.classList);
 
@@ -56,13 +56,19 @@ class eventsView extends View {
     });
   };
 
-  renderPastEvents = async (e, year = e.target.innerHTML) => {
-    if (e.target.classList.value === "btn-year") {
+  generatePastEvents = async (e) => {
+    if (e.target.classList.value === "btn-year")
+      apis.state.search.year = e.target.innerHTML;
+    if (
+      e.target.classList.value === "pagination-button" ||
+      e.target.classList.value === "btn-year"
+    ) {
       this._parentElement.innerHTML = "";
-      const events = await apis.getUfcEvents(year);
+      console.log(apis.state.search);
+      const events = await apis.getUfcEvents(apis.state.search.year);
       apis.state.pastEvents = events;
-
-      pagination.getSearchResultsPage().forEach((event) => {
+      const page = apis.state.search.page;
+      PaginationView.getSearchResultsPage(page).forEach((event) => {
         // if (event.Status === status) {
         const markup = `
               <tr class="table-content-event">
@@ -94,17 +100,17 @@ class eventsView extends View {
     });
   }
 
-  renderEvents() {
-    const btnPastEvents = document.querySelector(".btn-past-events");
+  renderUpcomingEvents() {
     const btnUpcomingEvents = document.querySelector(".btn-upc-events");
-
-    btnUpcomingEvents.addEventListener("click", this.renderUpcomingEvents);
-    btnPastEvents.addEventListener("click", this.getYearButtons);
+    this.generateUpcomingEvents();
+    btnUpcomingEvents.addEventListener("click", this.generateUpcomingEvents);
   }
 
-  renderYearsEvents() {
-    const buttons = document.querySelector(".set-year-buttons");
-    buttons.addEventListener("click", this.renderPastEvents);
+  renderPastEvents() {
+    const yearButtons = document.querySelector(".set-year-buttons");
+    const btnPastEvents = document.querySelector(".btn-past-events");
+    btnPastEvents.addEventListener("click", this.getYearButtons);
+    yearButtons.addEventListener("click", this.generatePastEvents);
   }
 
   // toggleActive(button) {
