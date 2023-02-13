@@ -41,7 +41,10 @@ header.nav-scroll {
   display: inline-block;
 }
 .nav-list li a {
-  display: block;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease;
   text-decoration: none;
   color: white;
@@ -52,6 +55,7 @@ header.nav-scroll {
   display: flex;
   justify-content: center;
   align-items: center;
+
   background-color: var(--dark-red);
 }
 .nav-list li a.active {

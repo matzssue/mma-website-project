@@ -12,8 +12,8 @@ const activeBar = function () {
   allButtons.forEach((btn) => {
     const currentHash = btn.innerText;
     const hash = document.URL;
-
-    hash === `http://127.0.0.1:5500/${currentHash}.html`
+    console.log(hash);
+    hash === `http://127.0.0.1:5500/mma-site-project/${currentHash}.html`
       ? btn.firstChild.classList.add("active")
       : btn.classList.remove(".active");
   });

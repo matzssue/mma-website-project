@@ -8,6 +8,7 @@ export const state = {
   fighterInfo: [],
   allFighters: [],
   fighterName: "",
+  pastEvents: [],
 };
 
 export const getRandomPeople = async function () {
@@ -148,4 +149,3 @@ export const getAllFighters = async function () {
     console.log(err);
   }
 };
-// export const getPastEvents

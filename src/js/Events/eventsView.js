@@ -1,6 +1,7 @@
 import View from "../Home/Views/View.js";
 import * as apis from "../apis.js";
 import * as helpers from "../helpers.js";
+import * as pagination from "./pagination.js";
 
 class eventsView extends View {
   _parentElement = document.querySelector(".table-content");
@@ -59,8 +60,9 @@ class eventsView extends View {
     if (e.target.classList.value === "btn-year") {
       this._parentElement.innerHTML = "";
       const events = await apis.getUfcEvents(year);
-      events.forEach((event) => {
-        console.log(event);
+      apis.state.pastEvents = events;
+
+      pagination.getSearchResultsPage().forEach((event) => {
         // if (event.Status === status) {
         const markup = `
               <tr class="table-content-event">
@@ -72,6 +74,7 @@ class eventsView extends View {
               `;
 
         this._parentElement.insertAdjacentHTML("beforeend", markup);
+
         // }
       });
     }
@@ -96,7 +99,6 @@ class eventsView extends View {
     const btnUpcomingEvents = document.querySelector(".btn-upc-events");
 
     btnUpcomingEvents.addEventListener("click", this.renderUpcomingEvents);
-
     btnPastEvents.addEventListener("click", this.getYearButtons);
   }
 

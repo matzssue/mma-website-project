@@ -271,6 +271,9 @@ main {
 .fighter-photo {
   width: 250px;
 }
+.fighter-name {
+  font-size: 1.2rem;
+}
 .fighter-name:hover {
   cursor: pointer;
   color: rgb(2, 2, 2);
@@ -294,6 +297,7 @@ main {
 
 .fighter-results {
   margin-top: 1em;
+  font-size: 1.1rem;
 }
 
 .fighter-results > p {
