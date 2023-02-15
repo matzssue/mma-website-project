@@ -1,6 +1,7 @@
 import { getFighterInfo, state } from "../../apis.js";
-import View from "./View.js";
+import View from "../../View.js";
 import { convertInchesToCm } from "../../helpers.js";
+import { setDate } from "../../helpers.js";
 class mainFightView extends View {
   _parentElement = document.querySelector(".main-event");
   _data = state;
@@ -87,7 +88,6 @@ class mainFightView extends View {
       if (e.target.dataset.id === "name") {
         state.fighterName = e.target.innerHTML.toLowerCase();
         const parentElement = document.querySelector(".events-container");
-        console.log(state.fighterName);
         const findFighter = state.allFighters.find(
           (fighter) => fighter.fullname.toLowerCase() === state.fighterName
         );
@@ -97,6 +97,7 @@ class mainFightView extends View {
         await getFighterInfo(findFighter.fighterId);
 
         const data = state.fighterInfo[0];
+        console.log(data);
         // DOOO POPRAWIENIA !!! ROK URODZENIA !!
         const markup = `
         <div class="overlay"></div>
@@ -113,7 +114,9 @@ class mainFightView extends View {
             <span class="fighter-name" data-id="name"><p>${
               data.name
             }</p></span><br />
-            <p class="fighter-info"><span>Age:</span>20 / birth-date:</p> 
+            <p class="fighter-info"><span>Age:</span>
+              
+            20 / birth-date: ${setDate(data.age)}</p> 
             <p class="fighter-info"><span>Height:</span>${
               data.height
             } inch / ${convertInchesToCm(data.height)} cm</p>

@@ -1,6 +1,6 @@
 import * as apis from "../../apis.js";
 import { convertInchesToCm } from "../../helpers.js";
-import View from "../../Home/Views/View.js";
+import View from "../../View.js";
 class fighterView extends View {
   searchInput;
   _parentElement = document.querySelector("#fighter-container");
@@ -10,14 +10,14 @@ class fighterView extends View {
     inputBtn.addEventListener("click", this._generateMarkup);
   }
 
-  async _generateMarkup(
+  _generateMarkup = async (
     e,
     searchInput = document.querySelector("#input").value
-  ) {
+  ) => {
     try {
       e.preventDefault();
+      this.renderSpinner();
       const name = searchInput.toLowerCase();
-      const parentElement = document.querySelector("#fighter-container");
       await apis.getAllFighters();
 
       // finding fighter with the same name as input
@@ -26,11 +26,11 @@ class fighterView extends View {
       );
 
       // getting api info about fighter
-      console.log(findFighter);
+
       const fighterId = findFighter.fighterId;
       await apis.getFighterInfo(fighterId);
       const data = apis.state.fighterInfo[0];
-      console.log(data);
+
       const markup = `
     <div class="fighter-image-container">
       <img
@@ -78,20 +78,19 @@ class fighterView extends View {
   
     `;
 
-      parentElement.innerHTML = "";
-      parentElement.insertAdjacentHTML("beforeend", markup);
+      this._clear();
+      this._parentElement.insertAdjacentHTML("beforeend", markup);
     } catch (err) {
+      console.log(err);
       const name = searchInput;
-      const parentElement = document.querySelector("#fighter-container");
       const markup = `
     <div class="error">
-
       <p>Probably there is no fighter with name: ${name}. Please try somone else (example "Mateusz Gamrot") </p>
   </div>
     `;
-      parentElement.innerHTML = "";
-      parentElement.insertAdjacentHTML("afterbegin", markup);
+      this._clear();
+      this._parentElement.insertAdjacentHTML("afterbegin", markup);
     }
-  }
+  };
 }
 export default new fighterView();

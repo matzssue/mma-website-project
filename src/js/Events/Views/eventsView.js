@@ -1,6 +1,6 @@
-import View from "../Home/Views/View.js";
-import * as apis from "../apis.js";
-import * as helpers from "../helpers.js";
+import View from "../../View.js";
+import * as apis from "../../apis.js";
+import * as helpers from "../../helpers.js";
 import PaginationView from "./PaginationView.js";
 
 class eventsView extends View {
@@ -57,8 +57,11 @@ class eventsView extends View {
   };
 
   generatePastEvents = async (e) => {
-    if (e.target.classList.value === "btn-year")
+    e.preventDefault();
+    if (e.target.classList.value === "btn-year") {
       apis.state.search.year = e.target.innerHTML;
+      apis.state.search.page = 1;
+    }
     if (
       e.target.classList.value === "pagination-button" ||
       e.target.classList.value === "btn-year"
@@ -69,8 +72,8 @@ class eventsView extends View {
       apis.state.pastEvents = events;
       const page = apis.state.search.page;
       PaginationView.getSearchResultsPage(page).forEach((event) => {
-        // if (event.Status === status) {
-        const markup = `
+        if (event.Status === "Final") {
+          const markup = `
               <tr class="table-content-event">
               <td class="event-date">${helpers.setDate(event.DateTime)}</td>
               <td class="event-name">${event.Name}</td>
@@ -79,9 +82,8 @@ class eventsView extends View {
               </tr>
               `;
 
-        this._parentElement.insertAdjacentHTML("beforeend", markup);
-
-        // }
+          this._parentElement.insertAdjacentHTML("beforeend", markup);
+        }
       });
     }
   };

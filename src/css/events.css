@@ -1,3 +1,14 @@
+@import "footer.css";
+@import "header.css";
+@import "pagination.css";
+
+:root {
+  --black-color: #080705;
+  --grey-color: #202020;
+  --dark-red: #702632;
+  --light-red: #912f40;
+  --background-color: #e7e7e7;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -15,7 +26,9 @@ main {
   justify-content: center;
 }
 #events-container {
+  background-color: var(--grey-color);
   min-width: 60%;
+
   margin: 5em 0em;
   border: 3px solid white;
 }
@@ -71,7 +84,7 @@ button.active {
   font-weight: 900;
 }
 .event-table {
-  width: 100%;
+  min-width: 100%;
 }
 table,
 tr,
@@ -82,9 +95,11 @@ td {
   padding: 0.5em 0.5em;
   color: white;
 }
+
 th {
   padding: 0.5rem 0;
 }
+
 i {
   margin: 0 0.3em;
 }

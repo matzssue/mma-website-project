@@ -1,6 +1,6 @@
-import * as apis from "../apis.js";
-import { ELEMENT_PER_PAGE } from "../config.js";
-import View from "../Home/Views/View.js";
+import * as apis from "../../apis.js";
+import { ELEMENT_PER_PAGE } from "../../config.js";
+import View from "../../View.js";
 import eventsView from "./eventsView.js";
 
 class PaginationView extends View {
@@ -19,15 +19,15 @@ class PaginationView extends View {
     if (apis.state.search.maxPage > 1) {
       const markup = `
     
-    <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
-    &lt;
-    </button>
-    <div id="pagination-number">${apis.state.search.page}
-    </div>
-  
-   <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
-   &gt;
-   </button>
+        <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+        &lt;
+        </button>
+        <div id="pagination-number">${apis.state.search.page}
+        </div>
+      
+        <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+        &gt;
+        </button>
    
    
    `;
@@ -47,15 +47,19 @@ class PaginationView extends View {
     return (apis.state.search.maxPage = maxPage);
   }
 
-  previousPage() {
-    const btn = document.querySelector("#prev-button");
-    if (search.page > 1) {
-      search.page = search.page + 1;
-      this.generateMarkup;
+  previousPage = async (e) => {
+    if (apis.state.search.page > 1 && e.target.id === "prev-button") {
+      apis.state.search.page = apis.state.search.page - 1;
+      this.generateMarkup(e);
+      await eventsView.generatePastEvents(e);
     }
-  }
+  };
   nextPage = async (e) => {
-    if (apis.state.search.page < apis.state.search.maxPage) {
+    if (
+      apis.state.search.page < apis.state.search.maxPage &&
+      e.target.id === "next-button"
+    ) {
+      // console.log(e.target);
       apis.state.search.page = apis.state.search.page + 1;
       this.generateMarkup(e);
       await eventsView.generatePastEvents(e);
@@ -64,8 +68,9 @@ class PaginationView extends View {
 
   check() {
     const paginationContainer = document.querySelector(".pagination-container");
-    const btn = document.querySelector("#next-button");
+
     paginationContainer.addEventListener("click", this.nextPage);
+    paginationContainer.addEventListener("click", this.previousPage);
   }
 }
 export default new PaginationView();

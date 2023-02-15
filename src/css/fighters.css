@@ -1,3 +1,15 @@
+@import "footer.css";
+@import "header.css";
+@import "spinner.css";
+
+:root {
+  --black-color: #080705;
+  --grey-color: #202020;
+  --dark-red: #702632;
+  --light-red: #912f40;
+  --background-color: #e7e7e7;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -53,7 +65,7 @@ main {
 
 .btn-search {
   cursor: pointer;
-  background-color: black;
+  background-color: var(--light-red);
   box-shadow: 8px 8px 24px 0px rgb(7, 7, 7);
   padding: 0.5em 2em;
   border-radius: 0.5em;

@@ -10,7 +10,8 @@ const getAllInfo = async function () {
 
 const renderMainPage = function () {
   mainFightView._renderMarkup();
-  otherFightView.renderMarkup();
+  otherFightView._generateMarkup();
+  otherFightView.toggleFights();
   mainFightView.renderPopup();
   mainFightView.removePopup();
 };

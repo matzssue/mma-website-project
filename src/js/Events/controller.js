@@ -1,6 +1,6 @@
-import eventsView from "../Events/eventsView.js";
-import * as apis from "../apis.js";
-import PaginationView from "./PaginationView.js";
+import eventsView from "./Views/eventsView.js";
+
+import PaginationView from "./Views/PaginationView.js";
 
 const init = function () {
   PaginationView.generatePagination();
