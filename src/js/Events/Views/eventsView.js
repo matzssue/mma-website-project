@@ -8,7 +8,7 @@ class eventsView extends View {
   buttonsContainer = document.querySelector(".set-year-buttons");
 
   getYearButtons = () => {
-    this._parentElement.innerHTML = "";
+    this._clear();
     this.buttonsContainer.classList.remove("hidden");
 
     let year = new Date().getFullYear();
@@ -29,8 +29,8 @@ class eventsView extends View {
   };
 
   generateUpcomingEvents = async () => {
-    const btnUpcomingEvents = document.querySelector(".btn-upc-events");
-    console.log(btnUpcomingEvents.classList);
+    const pagination = document.querySelector(".pagination");
+    pagination ? pagination.remove() : "";
 
     this.buttonsContainer.classList.add("hidden");
     this._parentElement.innerHTML = "";
@@ -66,8 +66,7 @@ class eventsView extends View {
       e.target.classList.value === "pagination-button" ||
       e.target.classList.value === "btn-year"
     ) {
-      this._parentElement.innerHTML = "";
-      console.log(apis.state.search);
+      this._clear();
       const events = await apis.getUfcEvents(apis.state.search.year);
       apis.state.pastEvents = events;
       const page = apis.state.search.page;
@@ -77,8 +76,6 @@ class eventsView extends View {
               <tr class="table-content-event">
               <td class="event-date">${helpers.setDate(event.DateTime)}</td>
               <td class="event-name">${event.Name}</td>
-             
-              
               </tr>
               `;
 

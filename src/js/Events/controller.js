@@ -2,11 +2,18 @@ import eventsView from "./Views/eventsView.js";
 
 import PaginationView from "./Views/PaginationView.js";
 
-const init = function () {
-  PaginationView.generatePagination();
+const events = function () {
   eventsView.renderUpcomingEvents();
   eventsView.renderPastEvents();
   eventsView.toggleActive();
-  PaginationView.check();
+};
+const pagination = function () {
+  PaginationView.renderPagination();
+  PaginationView.changePage();
+};
+
+const init = function () {
+  events();
+  pagination();
 };
 init();

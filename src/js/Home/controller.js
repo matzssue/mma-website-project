@@ -14,6 +14,7 @@ const renderMainPage = function () {
   otherFightView.toggleFights();
   mainFightView.renderPopup();
   mainFightView.removePopup();
+  mainFightView.countDownTimer();
 };
 
 const init = async function () {

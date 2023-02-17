@@ -6,19 +6,20 @@ import eventsView from "./eventsView.js";
 class PaginationView extends View {
   _parentElement = document.querySelector(".pagination-container");
 
-  generatePagination() {
+  renderPagination() {
     const yearButtons = document.querySelector(".set-year-buttons");
-
     yearButtons.addEventListener("click", this.generateMarkup);
   }
+
   generateMarkup = async (e) => {
-    this._parentElement.innerHTML = "";
+    this._clear();
+
     if (e.target.classList.value === "btn-year")
       apis.state.pastEvents = await apis.getUfcEvents(e.target.innerHTML);
     this.lastPage();
     if (apis.state.search.maxPage > 1) {
       const markup = `
-    
+        <div class="pagination">
         <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
         &lt;
         </button>
@@ -28,7 +29,7 @@ class PaginationView extends View {
         <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
         &gt;
         </button>
-   
+        </div>
    
    `;
 
@@ -38,12 +39,10 @@ class PaginationView extends View {
   getSearchResultsPage(page = apis.state.search.page) {
     const start = (page - 1) * ELEMENT_PER_PAGE;
     const end = page * ELEMENT_PER_PAGE;
-
     return apis.state.pastEvents.slice(start, end);
   }
   lastPage() {
     const maxPage = Math.ceil(apis.state.pastEvents.length / ELEMENT_PER_PAGE);
-
     return (apis.state.search.maxPage = maxPage);
   }
 
@@ -66,7 +65,7 @@ class PaginationView extends View {
     }
   };
 
-  check() {
+  changePage() {
     const paginationContainer = document.querySelector(".pagination-container");
 
     paginationContainer.addEventListener("click", this.nextPage);

@@ -8,3 +8,19 @@ export const setDate = function (date) {
 export const convertInchesToCm = function (inches) {
   return Math.round(inches / 2.54);
 };
+
+export const countDownTimer = function (date) {
+  const countDownDate = date.getTime();
+  const interval = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const timeContainer = document.querySelector(".center-info-time");
+    timeContainer.innerHTML = `Time left: ${days}d ${hours}h`;
+  }, 1000);
+  interval();
+};

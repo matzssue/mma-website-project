@@ -1,4 +1,4 @@
-.pagination-container {
+.pagination {
   display: flex;
   align-items: center;
   background-color: var(--grey-color);
