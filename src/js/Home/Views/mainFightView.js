@@ -181,7 +181,10 @@ class mainFightView extends View {
       );
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const timeContainer = document.querySelector(".center-info-time");
-      timeContainer.innerHTML = `Time left: ${days} days ${hours} hours ${minutes} minutes `;
+      minutes > 0
+        ? (timeContainer.innerHTML = `Time left: ${days} days ${hours} hours ${minutes} minutes `)
+        : (timeContainer.innerHTML = `The event is happening right now!`);
+      // timeContainer.innerHTML = `Time left: ${days} days ${hours} hours ${minutes} minutes `;
     }, 1000);
   }
 }

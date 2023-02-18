@@ -65,7 +65,7 @@ class otherFightsView extends View {
 
       const spinner = document.querySelector(".spinner");
       this._parentElement.insertAdjacentHTML("beforeend", markup);
-      spinner.remove();
+      spinner ? spinner.remove() : "";
     });
   };
 }

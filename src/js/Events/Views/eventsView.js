@@ -5,11 +5,13 @@ import PaginationView from "./PaginationView.js";
 
 class eventsView extends View {
   _parentElement = document.querySelector(".table-content");
-  buttonsContainer = document.querySelector(".set-year-buttons");
+  _buttonsContainer = document.querySelector(".set-year-buttons");
+  _btnPastEvents = document.querySelector(".btn-past-events");
+  _btnUpcomingEvents = document.querySelector(".btn-upc-events");
 
   getYearButtons = () => {
     this._clear();
-    this.buttonsContainer.classList.remove("hidden");
+    this._buttonsContainer.classList.remove("hidden");
 
     let year = new Date().getFullYear();
 
@@ -24,15 +26,15 @@ class eventsView extends View {
     
     `;
 
-    this.buttonsContainer.innerHTML = "";
-    this.buttonsContainer.insertAdjacentHTML("afterbegin", markup);
+    this._buttonsContainer.innerHTML = "";
+    this._buttonsContainer.insertAdjacentHTML("afterbegin", markup);
   };
 
   generateUpcomingEvents = async () => {
     const pagination = document.querySelector(".pagination");
     pagination ? pagination.remove() : "";
 
-    this.buttonsContainer.classList.add("hidden");
+    this._buttonsContainer.classList.add("hidden");
     this._parentElement.innerHTML = "";
     let currYear = new Date().getFullYear();
     const events = [
@@ -85,32 +87,48 @@ class eventsView extends View {
     }
   };
 
-  toggleActive() {
-    const btnPastEvents = document.querySelector(".btn-past-events");
-    const btnUpcomingEvents = document.querySelector(".btn-upc-events");
-    btnPastEvents.addEventListener("click", function () {
-      btnPastEvents.classList.add("active");
-      btnUpcomingEvents.classList.remove("active");
-    });
+  setActive = (e) => {
+    if (e.target.classList.value === "btn-past-events") {
+      this._btnPastEvents.classList.add("active");
+      this._btnUpcomingEvents.classList.remove("active");
+    }
+    if (e.target.classList.value === "btn-upc-events") {
+      this._btnPastEvents.classList.remove("active");
+      this._btnUpcomingEvents.classList.add("active");
+    }
+  };
 
-    btnUpcomingEvents.addEventListener("click", function () {
-      btnPastEvents.classList.remove("active");
-      btnUpcomingEvents.classList.add("active");
-    });
-  }
+  toggleActive = () => {
+    const btnContainer = document.querySelector(".event-type-switcher");
+    btnContainer.addEventListener("click", this.setActive);
+  };
 
-  renderUpcomingEvents() {
-    const btnUpcomingEvents = document.querySelector(".btn-upc-events");
+  // toggleActive = () => {
+  //   const btnContainer = document.querySelector('.event-type-switcher')
+  //   btnContainer.addEventListener('click', this.toggleActive)
+  //   this._btnPastEvents.addEventListener("click", function () {
+  //     this._btnPastEvents.classList.add("active");
+  //     this._btnUpcomingEvents.classList.remove("active");
+  //   });
+
+  //   this._btnUpcomingEvents.addEventListener("click", function () {
+  //     this._btnPastEvents.classList.remove("active");
+  //     this._btnUpcomingEvents.classList.add("active");
+  //   });
+  // };
+
+  renderUpcomingEvents = () => {
     this.generateUpcomingEvents();
-    btnUpcomingEvents.addEventListener("click", this.generateUpcomingEvents);
-  }
+    this._btnUpcomingEvents.addEventListener(
+      "click",
+      this.generateUpcomingEvents
+    );
+  };
 
-  renderPastEvents() {
-    const yearButtons = document.querySelector(".set-year-buttons");
-    const btnPastEvents = document.querySelector(".btn-past-events");
-    btnPastEvents.addEventListener("click", this.getYearButtons);
-    yearButtons.addEventListener("click", this.generatePastEvents);
-  }
+  renderPastEvents = () => {
+    this._btnPastEvents.addEventListener("click", this.getYearButtons);
+    this._buttonsContainer.addEventListener("click", this.generatePastEvents);
+  };
 
   // toggleActive(button) {
   //   const btnPastEvents = document.querySelector(".btn-past-events");
