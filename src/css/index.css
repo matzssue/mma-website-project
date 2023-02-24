@@ -131,11 +131,12 @@ main {
 
 .main-event-fighter-img {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   height: 300px;
   width: 250px;
   margin-top: 2em;
-  justify-content: center;
-  align-items: center;
 }
 
 /* CENTER DIV (BEETWEN FIGHTERS) */

@@ -72,6 +72,7 @@ main {
 }
 #fighter-container {
   display: grid;
+  justify-content: center;
   grid-template-columns: 280px auto;
   width: 100%;
   margin-top: 2em;
@@ -145,7 +146,15 @@ main {
 }
 .error {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: gray;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  background-color: var(--grey-color);
+  width: 50vw;
+  padding: 2rem;
+}
+.error p {
+  color: var(--light-red);
+  font-size: 1.3rem;
+  font-weight: bold;
 }

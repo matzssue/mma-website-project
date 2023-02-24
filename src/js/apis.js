@@ -82,7 +82,6 @@ export const getEventInfo = async function (eventId) {
     const activeFights = fights.filter((fight) => fight.Active);
 
     // Getting id of fighters from Main Event
-
     state.mainFight = activeFights[0].Fighters.map((fighter) => {
       return {
         id: fighter.FighterId,
@@ -107,8 +106,8 @@ export const getFighterInfo = async function (fighterId) {
       `https://api.sportsdata.io/v3/mma/scores/json/Fighter/${fighterId}?key=${UFC_API_KEY}`
     );
     const data = await api.json();
-    // Getting all important informations of fighter
 
+    // Getting all important informations of fighter
     const newData = [data].map((fighter) => {
       return {
         id: fighter.FighterId,
@@ -143,6 +142,7 @@ export const getAllFighters = async function () {
       `https://api.sportsdata.io/v3/mma/scores/json/Fighters?key=${UFC_API_KEY}`
     );
     const data = await api.json();
+    // Getting all fighters data
     const newData = data.map((fighter) => {
       return {
         fullname: `${fighter.FirstName} ${fighter.LastName}`,

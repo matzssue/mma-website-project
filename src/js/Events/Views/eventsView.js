@@ -103,20 +103,6 @@ class eventsView extends View {
     btnContainer.addEventListener("click", this.setActive);
   };
 
-  // toggleActive = () => {
-  //   const btnContainer = document.querySelector('.event-type-switcher')
-  //   btnContainer.addEventListener('click', this.toggleActive)
-  //   this._btnPastEvents.addEventListener("click", function () {
-  //     this._btnPastEvents.classList.add("active");
-  //     this._btnUpcomingEvents.classList.remove("active");
-  //   });
-
-  //   this._btnUpcomingEvents.addEventListener("click", function () {
-  //     this._btnPastEvents.classList.remove("active");
-  //     this._btnUpcomingEvents.classList.add("active");
-  //   });
-  // };
-
   renderUpcomingEvents = () => {
     this.generateUpcomingEvents();
     this._btnUpcomingEvents.addEventListener(
@@ -129,11 +115,5 @@ class eventsView extends View {
     this._btnPastEvents.addEventListener("click", this.getYearButtons);
     this._buttonsContainer.addEventListener("click", this.generatePastEvents);
   };
-
-  // toggleActive(button) {
-  //   const btnPastEvents = document.querySelector(".btn-past-events");
-  //   const btnUpcomingEvents = document.querySelector(".btn-upc-events");
-
-  // }
 }
 export default new eventsView();
