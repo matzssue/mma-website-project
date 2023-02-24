@@ -82,14 +82,10 @@ class fighterView extends View {
       this._parentElement.insertAdjacentHTML("beforeend", markup);
     } catch (err) {
       console.log(err);
+
       const name = searchInput;
-      const markup = `
-    <div class="error">
-      <p>Probably there is no fighter with name: ${name}. Please try somone else (example "Mateusz Gamrot") </p>
-  </div>
-    `;
-      this._clear();
-      this._parentElement.insertAdjacentHTML("afterbegin", markup);
+      const message = `Probably there is no fighter with name: "${name}". Please try somone else (example "Mateusz Gamrot") `;
+      this.renderError(message);
     }
   };
 }
