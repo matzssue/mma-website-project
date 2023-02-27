@@ -19,17 +19,21 @@ class eventInfoView extends View {
     const container = document.querySelector("#events-container");
     const display = document.querySelector(".button-container");
     const container2 = document.querySelector(".events-fights-info-container");
+    container2.innerHTML = "";
     container.classList.remove("hidden");
     display.classList.add("hidden");
-    container2.innerHTML = "";
+  }
+  showEvents() {
+    const container = document.querySelector("#events-container");
+    const display = document.querySelector(".button-container");
+    container.classList.add("hidden");
+    display.classList.remove("hidden");
   }
 
   generateEvents = async (e) => {
     if (e.target.parentElement.classList.value === "table-content-event") {
-      const display = document.querySelector(".button-container");
-
-      display.classList.remove("hidden");
-
+      this.showEvents();
+      this.renderSpinner();
       const id = e.target.parentElement.dataset.eventId;
       await apis.getEventInfo(id);
       const events = apis.state.allFights;
@@ -59,7 +63,7 @@ class eventInfoView extends View {
         `;
         const spinner = document.querySelector(".spinner");
         this._parentElement.insertAdjacentHTML("beforeend", markup);
-        //   spinner ? spinner.remove() : "";
+        spinner ? spinner.remove() : "";
       });
     }
   };
