@@ -47,10 +47,10 @@ class eventsView extends View {
 
     scheduledEvents.forEach((event) => {
       const markup = `
-      <tr class="table-content-event">
+      <tr class="table-content-event" data-event-id="${event.EventId}">
         <td class="event-date">${helpers.setDate(event.DateTime)}</td>
         <td class="event-name">${event.Name}</td>
-  
+
       </tr>
           `;
 
@@ -75,7 +75,7 @@ class eventsView extends View {
       PaginationView.getSearchResultsPage(page).forEach((event) => {
         if (event.Status === "Final") {
           const markup = `
-              <tr class="table-content-event">
+              <tr class="table-content-event" data-event-id="${event.EventId}">
               <td class="event-date">${helpers.setDate(event.DateTime)}</td>
               <td class="event-name">${event.Name}</td>
               </tr>

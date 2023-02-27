@@ -77,7 +77,7 @@ export const getEventInfo = async function (eventId) {
       `https://api.sportsdata.io/v3/mma/scores/json/Event/${eventId}?key=${UFC_API_KEY}`
     );
     const data = await api.json();
-
+    console.log(data);
     const fights = data.Fights;
     const activeFights = fights.filter((fight) => fight.Active);
 
@@ -96,6 +96,7 @@ export const getEventInfo = async function (eventId) {
         };
       })
     );
+    console.log(state);
   } catch (err) {
     console.log(err);
   }
