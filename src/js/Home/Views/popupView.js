@@ -38,15 +38,18 @@ class popupView extends View {
         e.target.previousElementSibling?.classList.contains("fighter-name")
       ) {
         // Finding fighter by name from data
+        console.log(e.target.previousElementSibling);
         e.target.previousElementSibling
           ? (state.fighterName =
               e.target.previousElementSibling.innerHTML.toLowerCase())
           : (state.fighterName = e.target.innerHTML.toLowerCase());
+        console.log(state.fighterName);
+        console.log(state.allFighters);
 
         const findFighter = state.allFighters.find(
           (fighter) => fighter.fullname.toLowerCase() === state.fighterName
         );
-
+        console.log(findFighter);
         // Getting info about found fighter
         await getFighterInfo(findFighter.fighterId);
         const data = state.fighterInfo[0];
@@ -112,9 +115,9 @@ class popupView extends View {
               </div>
             
             </div>
-          
+    
             `;
-
+        console.log(this._parentElement);
         this._parentElement.insertAdjacentHTML("beforeend", markup);
       }
     } catch (err) {

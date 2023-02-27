@@ -3,7 +3,7 @@ import { LEAGUE, UFC_API_KEY } from "./config.js";
 export const state = {
   currentEvent: {},
   mainFight: [],
-  otherFights: {},
+  allFights: {},
   fighterId: [],
   fighterInfo: [],
   allFighters: [],
@@ -89,14 +89,13 @@ export const getEventInfo = async function (eventId) {
     });
 
     // Getting id of fighters from Other Events
-    state.otherFights = activeFights.slice(1).map((event) =>
+    state.allFights = activeFights.map((event) =>
       event.Fighters.map((fighter) => {
         return {
           fighterId: fighter.FighterId,
         };
       })
     );
-    console.log(state);
   } catch (err) {
     console.log(err);
   }

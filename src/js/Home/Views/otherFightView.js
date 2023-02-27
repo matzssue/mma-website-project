@@ -30,11 +30,13 @@ class otherFightsView extends View {
 
   _generateMarkup = () => {
     const date = setDate(this.#data.currentEvent.day);
-    const fighters = apis.state.otherFights;
 
-    fighters.map(async (elem) => {
-      const fighterOne = await apis.getFighterInfo(elem[0].fighterId);
-      const fighterTwo = await apis.getFighterInfo(elem[1].fighterId);
+    const otherEvents = apis.state.allFights.slice(1);
+
+    otherEvents.map(async (event) => {
+      const fighterOne = await apis.getFighterInfo(event[0].fighterId);
+      const fighterTwo = await apis.getFighterInfo(event[1].fighterId);
+
       const fighterWeight = fighterOne[0].weight;
       const markup = `
     

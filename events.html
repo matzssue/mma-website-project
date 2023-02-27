@@ -12,6 +12,7 @@
     />
 
     <link rel="stylesheet" href="./src/css/events.css" />
+
     <script
       src="https://kit.fontawesome.com/d44911e2cf.js"
       crossorigin="anonymous"
@@ -38,8 +39,8 @@
         </ul>
       </nav>
     </header>
-    <main>
-      <div id="events-container">
+    <main id="main">
+      <div id="events-container" class="">
         <div class="event-type-switcher">
           <button class="btn-upc-events active">Upcoming Events</button>
           <button class="btn-past-events">Past Events</button>
@@ -60,7 +61,12 @@
         </table>
         <div class="pagination-container"></div>
       </div>
-      <div class="display-event"></div>
+      <div class="events-fights-container">
+        <div class="button-container hidden">
+          <button class="back-btn">BACK</button>
+        </div>
+        <div class="events-fights-info-container"></div>
+      </div>
     </main>
     <footer>
       <div class="footer-container"><span>created by mathef</span></div>
