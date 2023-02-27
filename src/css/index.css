@@ -1,6 +1,7 @@
 @import "footer.css";
 @import "header.css";
 @import "spinner.css";
+@import "popup.css";
 
 :root {
   --black-color: #080705;
@@ -18,7 +19,7 @@
   font-family: "Roboto Slab", serif;
 }
 body {
-  background-color: var(--background-color);
+  background-color: rgb(59, 59, 59);
 }
 
 main {
@@ -37,7 +38,7 @@ main {
   margin: 2% 5%;
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
-  box-shadow: 8px 8px 24px 0px rgba(140, 140, 140, 1);
+  box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
 }
 .events-container h1 {
   background-color: var(--grey-color);
@@ -106,7 +107,6 @@ main {
 /* INFORMATIONS ABOUT FIGHTERS*/
 
 .main-event-fighter-name {
-  cursor: pointer;
   position: absolute;
   background-color: var(--dark-red);
   color: white;
@@ -127,6 +127,7 @@ main {
   flex-direction: column;
   justify-content: center;
   gap: 20px;
+  cursor: pointer;
 }
 
 .main-event-fighter-img {
@@ -188,7 +189,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-image: url(../img/navbar.jpg);
-  background-size: 10%;
+  background-size: 50%;
   border-bottom: 0.2em solid rgb(0, 0, 0);
   border-left: 0.2em solid rgb(0, 0, 0);
   border-right: 0.2em solid rgb(0, 0, 0);
@@ -253,121 +254,4 @@ main {
   display: flex;
   width: 50px;
   height: 50px;
-}
-
-/* FIGHTER POPUP */
-
-#fighter-container {
-  display: grid;
-  grid-template-columns: 180px auto;
-  width: 100%;
-  margin-top: 1em;
-  background-color: red;
-}
-.fighter-image-container {
-  background-color: var(--grey-color);
-}
-.fighter-stats-cointainer {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--grey-color);
-}
-.fighter-photo {
-  width: 250px;
-}
-.fighter-name {
-  font-size: 1.2rem;
-}
-.fighter-name:hover {
-  cursor: pointer;
-  color: rgb(2, 2, 2);
-}
-.fighter-name p {
-  margin-left: 0.5em;
-}
-
-.fighter-stats-cointainer span {
-  font-weight: bold;
-  margin-right: 0.5em;
-}
-.fighter-info {
-  padding: 0.1em 1em;
-  font-weight: 300;
-  font-size: 0.9em;
-}
-.border {
-  border: 2px solid black;
-}
-
-.fighter-results {
-  margin-top: 1em;
-  font-size: 1.1rem;
-}
-
-.fighter-results > p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(65, 65, 65);
-  padding: 0.5em;
-}
-.fighter-results-stats {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin: 2em 0;
-}
-.fighter-wins,
-.fighter-losses,
-.fighter-draws {
-  font-weight: bolder;
-  padding: 0 1em;
-  margin-left: 1em;
-}
-.fighter-wins {
-  background-color: green;
-}
-.fighter-losses {
-  background-color: rgb(235, 27, 27);
-}
-.fighter-draws {
-  background-color: rgb(0, 0, 0);
-}
-
-/* POPUP DIV */
-
-.overlay {
-  display: flex;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0, 0, 0);
-  z-index: 1;
-  -moz-opacity: 0.8;
-  opacity: 0.8;
-}
-
-.overlay-content {
-  display: flex;
-  justify-self: center;
-  align-self: center;
-  position: fixed;
-  top: 25%;
-  left: 25%;
-  width: auto;
-  height: auto;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.close-btn {
-  display: flex;
-  align-self: end;
-  background-color: transparent;
-  border: none;
-  padding: 0.2rem;
-  cursor: pointer;
 }

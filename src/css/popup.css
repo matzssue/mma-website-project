@@ -18,13 +18,15 @@
 }
 .fighter-name {
   font-size: 1.2rem;
+  margin-left: 0.5em;
 }
 .fighter-name:hover {
-  cursor: pointer;
   color: rgb(2, 2, 2);
+  cursor: pointer;
 }
-.fighter-name p {
-  margin-left: 0.5em;
+.fighter-name.popup:hover {
+  cursor: default;
+  color: rgb(2, 2, 2);
 }
 
 .fighter-stats-cointainer span {
