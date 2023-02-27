@@ -4,7 +4,7 @@ import { convertInchesToCm } from "../../helpers.js";
 import { setDate, getAge } from "../../helpers.js";
 
 class popupView extends View {
-  _parentElement = document.querySelector(".events-container");
+  _parentElement = document.querySelector("#main");
 
   renderPopup() {
     const mainPage = document.querySelector("#main");
@@ -38,13 +38,10 @@ class popupView extends View {
         e.target.previousElementSibling?.classList.contains("fighter-name")
       ) {
         // Finding fighter by name from data
-        console.log(e.target.previousElementSibling);
         e.target.previousElementSibling
           ? (state.fighterName =
               e.target.previousElementSibling.innerHTML.toLowerCase())
           : (state.fighterName = e.target.innerHTML.toLowerCase());
-        console.log(state.fighterName);
-        console.log(state.allFighters);
 
         const findFighter = state.allFighters.find(
           (fighter) => fighter.fullname.toLowerCase() === state.fighterName
@@ -66,7 +63,7 @@ class popupView extends View {
               </div>
               <div class="fighter-stats-cointainer">
               <button class="close-btn">X</button>
-                <span class="fighter-name" data-id="name"><p>${
+                <span class="fighter-name popup" data-id="name"><p>${
                   data.name
                 }</p></span><br />
                 <p class="fighter-info"><span>Age:</span>
@@ -117,7 +114,7 @@ class popupView extends View {
             </div>
     
             `;
-        console.log(this._parentElement);
+
         this._parentElement.insertAdjacentHTML("beforeend", markup);
       }
     } catch (err) {
