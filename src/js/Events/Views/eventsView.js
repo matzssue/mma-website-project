@@ -76,8 +76,8 @@ class eventsView extends View {
         if (event.Status === "Final") {
           const markup = `
               <tr class="table-content-event" data-event-id="${event.EventId}">
-              <td class="event-date">${helpers.setDate(event.DateTime)}</td>
-              <td class="event-name">${event.Name}</td>
+                <td class="event-date">${helpers.setDate(event.DateTime)}</td>
+                <td class="event-name">${event.Name}</td>
               </tr>
               `;
 
