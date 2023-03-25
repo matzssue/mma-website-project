@@ -9,6 +9,7 @@
   --dark-red: #702632;
   --light-red: #912f40;
   --background-color: #e7e7e7;
+  --main-color: #181818;
 }
 
 * {
@@ -19,7 +20,7 @@
   font-family: "Roboto Slab", serif;
 }
 body {
-  background-color: rgb(59, 59, 59);
+  background-color: var(--main-color);
 }
 
 main {
@@ -37,7 +38,7 @@ main {
   overflow: hidden;
   margin: 2% 5%;
   border-radius: 0.2rem;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
   box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
 }
 .events-container h1 {
@@ -90,7 +91,7 @@ main {
   justify-self: center;
   position: relative;
   max-width: fit-content;
-  background-color: var(--black-color);
+  background-color: #181818;
   margin: 0 1em;
   padding: 1em 0.2em;
   border-top-left-radius: 0.9em;

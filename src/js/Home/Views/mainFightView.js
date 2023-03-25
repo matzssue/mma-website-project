@@ -28,6 +28,7 @@ class mainFightView extends View {
               class="main-event-fighter-img"
               src="./src/img/fighters/1.jpg"
               alt=""
+              loading="lazy"
             />
             <span class="main-event-fighter-results"
               >${fighterOne[0].fighterResults}<br />(win-loss-draw)</span
@@ -43,6 +44,7 @@ class mainFightView extends View {
               class="main-event-fighter-img"
               src="./src/img/fighters/2.jpg"
               alt=""
+              loading="lazy"
             />
             <span class="main-event-fighter-results"
               >${fighterTwo[0].fighterResults} <br />(win-loss-draw)</span

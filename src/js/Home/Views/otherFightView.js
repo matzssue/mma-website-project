@@ -30,7 +30,7 @@ class otherFightsView extends View {
 
   _generateMarkup = () => {
     const date = setDate(this.#data.currentEvent.day);
-
+    // Get all fights without first one(main event)
     const otherEvents = apis.state.allFights.slice(1);
 
     otherEvents.map(async (event) => {
@@ -48,7 +48,7 @@ class otherFightsView extends View {
         >Weight class - ${this.getWeightClass(fighterWeight)}</span>
         </div>
         <div class="event-fighter-container left">
-        <img src="${await apis.getRandomPeople()}" alt="" />
+        <img src="${await apis.getRandomPeople()}" alt="" loading="lazy"/>
         <span>
         <p class="fighter-name" data-id="name">${fighterOne[0].name}</p>
         <p class="fighter-results">${fighterOne[0].fighterResults}</p>
@@ -60,7 +60,7 @@ class otherFightsView extends View {
         <p class="fighter-name" data-id="name">${fighterTwo[0].name}</p>
         <p class="fighter-results">${fighterTwo[0].fighterResults}</p>
         </span>
-        <img src="${await apis.getRandomPeople()}" alt="" />
+        <img src="${await apis.getRandomPeople()}" loading="lazy"alt="" />
         </div>
         </div>
         `;
